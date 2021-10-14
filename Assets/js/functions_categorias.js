@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 {
                     $('#modalFormCategorias').modal("hide");
                     formCategoria.reset();
-                    swal("Roles de usuario", objData.msg ,"success");
+                    swal("Categorías", objData.msg ,"success");
                     removePhoto();
                     tableCategorias.api().ajax.reload(null,false);
                 }else{

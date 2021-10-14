@@ -19,17 +19,17 @@
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
-								<span class="ltext-101 cl2 respon2">
+								<span class="ltext-101 cl2 respon2" style="text-shadow: 0px 0px 6px #000000; color:white">
 								<?= $arrSlider[$i]['descripcion'] ?>
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
-								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
+								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1" style="text-shadow: 1px 1px 4px #b8b8b8; color:black">
 								<?= $arrSlider[$i]['nombre'] ?>
 								</h2>
 							</div>
-								
+							
 							<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
 								<a href="<?= base_url().'/tienda/categoria/'.$arrSlider[$i]['nombre']; ?>" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									Ir a la tienda
@@ -107,14 +107,14 @@
 						<div class="block2-pic hov-img0">
 							<img src="<?= $portada ?>" alt="<?= $arrProductos[$p]['nombre'] ?>">
 
-							<a href="<?= base_url().'/tienda/producto'.$arrProductos[$p]['nombre']; ?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+							<a href="<?= base_url().'/tienda/producto/'.$arrProductos[$p]['nombre']; ?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
 								Ver producto
 							</a>
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="<?= base_url().'/tienda/producto'.$arrProductos[$p]['nombre']; ?>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+								<a href="<?= base_url().'/tienda/producto/'.$arrProductos[$p]['nombre']; ?>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 								<?= $arrProductos[$p]['nombre'] ?>
 								</a>
 

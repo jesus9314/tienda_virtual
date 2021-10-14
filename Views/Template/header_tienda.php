@@ -34,6 +34,8 @@
 	<link rel="stylesheet" type="text/css" href="<?= media()?>tienda/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?= media()?>tienda/css/main.css">
 <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?= media()?>tienda/css/style.css">
+<!--===============================================================================================-->
 </head>
 <body class="animsition">
 	
@@ -75,7 +77,7 @@
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li class="active-menu">
+							<li class="active-menu" style="text-shadow: 2px 2px 4px #FFF;">
 								<a href="<?= base_url() ?>">Inicio</a>
 							</li>
 
