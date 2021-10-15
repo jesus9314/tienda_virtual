@@ -372,7 +372,7 @@ function fntEditInfo(element,idProducto){
                 document.querySelector("#listCategoria").value = objProducto.categoriaid;
                 document.querySelector("#listStatus").value = objProducto.status;
                 document.querySelector("#divBarCode").classList.remove("notBlock");
-                document.querySelector("#divBarCode").classList.remove("notblock");
+                document.querySelector("#containerGallery").classList.remove("notblock");
                 tinymce.activeEditor.setContent(objProducto.descripcion); 
                 $('#listCategoria').selectpicker('render');
                 $('#listStatus').selectpicker('render');
@@ -387,7 +387,7 @@ function fntEditInfo(element,idProducto){
                             <img src="${objProductos[p].url_image}"></img>
                             </div>
                             <button type="button" class="btnDeleteImage" onclick="fntDelItem('#div${key}')" imgname="${objProductos[p].img}">
-                            <i class="fas fa-trash-alt"></i></button></div>`;
+                            <i class="fas fa-trash-al "></i></button></div>`;
                     }
                 }
                 document.querySelector("#containerImages").innerHTML = htmlImage; 
