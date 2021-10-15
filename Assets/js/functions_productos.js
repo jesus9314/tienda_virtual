@@ -371,6 +371,8 @@ function fntEditInfo(element,idProducto){
                 document.querySelector("#txtStock").value = objProducto.stock;
                 document.querySelector("#listCategoria").value = objProducto.categoriaid;
                 document.querySelector("#listStatus").value = objProducto.status;
+                document.querySelector("#divBarCode").classList.remove("notBlock");
+                document.querySelector("#divBarCode").classList.remove("notblock");
                 tinymce.activeEditor.setContent(objProducto.descripcion); 
                 $('#listCategoria').selectpicker('render');
                 $('#listStatus').selectpicker('render');
@@ -464,7 +466,7 @@ function fntBarcode(){
 function fntPrintBarcode(area){
     let elemntArea = document.querySelector(area);
     let vprint = window.open(' ', 'popimpr', 'height=400,width=600');
-    vprint.document.write(elemntArea.innerHTML );
+    vprint.document.write(elemntArea.innerHTML);
     vprint.document.close();
     vprint.print();
     vprint.close();

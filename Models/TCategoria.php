@@ -7,7 +7,7 @@ require_once("Libraries/Core/Mysql.php");
         public function getCategoriasT(string $categorias)
         {
             $this->con = new Mysql();
-            $sql = "SELECT idcategoria, nombre, descripcion, portada FROM categoria WHERE status != 0 AND idcategoria IN ($categorias)";
+            $sql = "SELECT idcategoria, nombre, descripcion, portada, ruta FROM categoria WHERE status != 0 AND idcategoria IN ($categorias)";
             $request = $this->con->selectall($sql);
             if(count($request) > 0)
             {
