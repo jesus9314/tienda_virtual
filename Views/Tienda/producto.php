@@ -42,7 +42,7 @@ $arrImages = $arrProducto['images'];
 								<div class="item-slick3" data-thumb="<?= $arrImages[$img]['url_image']; ?>">
 									<div class="wrap-pic-w pos-relative">
 										<img src="<?= $arrImages[$img]['url_image']; ?>" alt="<?= $arrProducto['nombre']; ?>">
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="<?= $arrImages[$img]['url_image']; ?>">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04 expand" href="<?= $arrImages[$img]['url_image']; ?>">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
@@ -61,7 +61,7 @@ $arrImages = $arrProducto['images'];
 						<h4 class="mtext-105 cl2 js-name-detail p-b-14">
 							<?= $arrProducto['nombre']; ?>
 						</h4>
-						<span class="mtext-106 cl2">
+						<span class="mtext-106 cl2 price">
 							<?= SMONEY.formatMoney($arrProducto['precio']); ?>
 						</span>
 						<!-- <p class="stext-102 cl3 p-t-23"></p> -->
@@ -99,6 +99,7 @@ $arrImages = $arrProducto['images'];
 					</div>
 				</div>
 			</div>
+			
 			<div class="bor10 m-t-50 p-t-43 p-b-40">
 				<!-- Tab01 -->
 				<div class="tab01">
@@ -124,14 +125,16 @@ $arrImages = $arrProducto['images'];
 			</div>
 		</div>
 
-		<div class="bg6 flex-c-m flex-w size-302 m-t-73 p-tb-15">
-			<h3>Productos Relacionados</h3>
-		</div>
 	</section>
 
 	<!-- Related Products -->
 	<section class="sec-relate-product bg0 p-t-45 p-b-105">
 		<div class="container">
+		<div class="p-b-45">
+				<h3 class="ltext-106 cl5 txt-center">
+					Related Products
+				</h3>
+			</div>
 			<!-- Slide2 -->
 			<div class="wrap-slick2">
 				<div class="slick2">
@@ -162,7 +165,7 @@ $arrImages = $arrProducto['images'];
 									<a href="<?= base_url().'/tienda/producto/'.$arrProductos[$p]['idproducto'].'/'.$ruta; ?>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 										<?= $arrProductos[$p]['nombre'] ?>
 									</a>
-									<span class="stext-105 cl3">
+									<span class="stext-105 cl3 price">
 										<?= SMONEY.formatMoney($arrProductos[$p]['precio']); ?>
 									</span>
 								</div>

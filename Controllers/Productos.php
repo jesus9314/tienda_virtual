@@ -59,7 +59,7 @@ class Productos extends Controllers
 				}else{
 					
 					$idProducto = intval($_POST['idProducto']);
-					$strNombre = strClean($_POST['txtNombre']);
+					$strNombre = strtoupper(strClean($_POST['txtNombre']));
 					$strDescripcion = strClean($_POST['txtDescripcion']);
 					$strCodigo = strClean($_POST['txtCodigo']);
 					$intCategoriaId = intval($_POST['listCategoria']);

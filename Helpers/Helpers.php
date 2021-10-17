@@ -135,13 +135,13 @@
     function clear_cadena(string $cadena){
 
         //eliminamos los slash
-        $cadena= str_replace("/"," ",$cadena);
+        $cadena= str_replace("/","",$cadena);
 
          //eliminamos los guiones
-         $cadena= str_replace("-"," ",$cadena);
+         $cadena= str_replace("-","",$cadena);
 
         //eliminamos las comillas
-        $cadena= str_replace('"'," ",$cadena);
+        $cadena= str_replace('"','',$cadena);
 
         //Reemplazamos la A y a
         $cadena = str_replace(

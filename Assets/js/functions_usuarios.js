@@ -481,7 +481,7 @@ function fntDelUsuario(idusuario)
 	                            if(objData.status)
 	                            {
 	                                swal("Eliminar!", objData.msg, "success");
-	                                tableRoles.api().ajax.reload();
+	                                tableUsuarios.api().ajax.reload(null,false);
 	                            }else
 	                            {
 	                                swal("Atención!", objData.msg, "error")

@@ -20,13 +20,13 @@
 					<div class="container h-full">
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
-								<span class="ltext-101 cl2 respon2" style="text-shadow: 0px 0px 6px #000000; color:white">
+								<span class="ltext-101 cl2 respon2" style="text-shadow: 0px 0px 10px #545454; color:white">
 								<?= $arrSlider[$i]['descripcion'] ?>
 								</span>
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
-								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1" style="text-shadow: 1px 1px 4px #b8b8b8; color:black">
+								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1" style="text-shadow: 0px 0px 5px #BFBFBF;color:black;">
 								<?= $arrSlider[$i]['nombre'] ?>
 								</h2>
 							</div>
@@ -120,7 +120,7 @@
 								<?= $arrProductos[$p]['nombre'] ?>
 								</a>
 
-								<span class="stext-105 cl3">
+								<span class="stext-105 cl3 price">
 								<?= SMONEY.formatMoney($arrProductos[$p]['precio']); ?>
 								</span>
 							</div>

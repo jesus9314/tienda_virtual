@@ -1,6 +1,5 @@
 document.write(`<script src="${base_url}/Assets/js/plugins/JsBarcode.all.min.js"></script>`);
 let tableProductos;
-let rowTable = "";
 $(document).on('focusin', function(e) {
     if ($(e.target).closest(".tox-dialog").length) {
         e.stopImmediatePropagation();
@@ -155,19 +154,15 @@ window.addEventListener('load', function() {
                         swal("", objData.msg ,"success");
                         document.querySelector("#idProducto").value = objData.idproducto;
                         document.querySelector("#containerGallery").classList.remove("notblock");
+                        $('#modalFormProductos').modal('hide');
 
                         if(rowTable == ""){
                             tableProductos.api().ajax.reload(null,false);
+                            
                         }else{
                            htmlStatus = intStatus == 1 ? 
                             '<span class="badge badge-success">Activo</span>' : 
                             '<span class="badge badge-danger">Inactivo</span>';
-                            rowTable.cells[1].textContent = intCodigo;
-                            rowTable.cells[2].textContent = strNombre;
-                            rowTable.cells[3].textContent = intStock;
-                            rowTable.cells[4].textContent = smony+strPrecio;
-                            rowTable.cells[5].innerHTML =  htmlStatus;
-                            rowTable = ""; 
                         }
                     }else{
                         swal("Error", objData.msg , "error");
@@ -214,6 +209,7 @@ if(document.querySelector("#txtCodigo")){
 
 tinymce.init({
 	selector: '#txtDescripcion',
+    language_url : '/languages/es_419.js',
 	width: "100%",
     height: 400,    
     statubar: true,

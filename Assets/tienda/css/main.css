@@ -368,7 +368,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 .main-menu > li > a {
   font-family: Poppins-Medium;
-  font-size: 14px;
+  font-size: 16px;
   color: #333;
   padding: 5px 0px;
   transition: all 0.4s;
@@ -2038,7 +2038,8 @@ input.num-product::-webkit-inner-spin-button {
 
 .block1-txt:hover .block1-name,
 .block1-txt:hover .block1-info {
-  color: #fff;
+  color: #000;
+  text-shadow: unset;
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -2056,6 +2057,7 @@ input.num-product::-webkit-inner-spin-button {
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
+  box-shadow: 1px 1px 10px black;
 }
 
 .block2-pic:hover .block2-btn {
@@ -2352,6 +2354,7 @@ input.num-product::-webkit-inner-spin-button {
   font-family: Poppins-Bold;
   font-size: 28px;
   line-height: 1.1;
+  text-shadow: 1px 1px 5px #fff;
 }
 
 .ltext-103 {

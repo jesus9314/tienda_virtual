@@ -897,7 +897,7 @@ $.magnificPopup = {
 
 		tClose: 'Close (Esc)',
 
-		tLoading: 'Loading...',
+		tLoading: 'Cargando...',
 
 		autoFocusLast: true
 
@@ -1677,9 +1677,9 @@ $.magnificPopup.registerModule('gallery', {
 		navigateByImgClick: true,
 		arrows: true,
 
-		tPrev: 'Previous (Left arrow key)',
-		tNext: 'Next (Right arrow key)',
-		tCounter: '%curr% of %total%'
+		tPrev: 'Anterior (flecha izquierda)',
+		tNext: 'Siguiente (fecha derecha)',
+		tCounter: '%curr% de %total%'
 	},
 
 	proto: {

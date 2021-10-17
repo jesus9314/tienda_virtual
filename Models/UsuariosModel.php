@@ -53,14 +53,22 @@
 			if($_SESSION['idUser'] !=1){
 				$whereAdmin = " AND p.idpersona !=1";
 			}
-			$sql = "SELECT * FROM selectUsuarios ".$whereAdmin;
+			$sql = "SELECT p.idpersona,p.identificacion,p.nombres,p.apellidos,p.telefono,p.email_user,p.status,r.idrol,r.nombrerol 
+					FROM persona p 
+					INNER JOIN rol r
+					ON p.rolid = r.idrol
+					WHERE p.status != 0".$whereAdmin;
 					$request = $this->selectall($sql);
 					return $request;
 		}
 		public function selectUsuario(int $idusuario)
 		{
 			$this->intIdUsuario = $idusuario;
-			$sql = "SELECT * FROM selectUsuario WHERE idpersona = $this->intIdUsuario";
+			$sql = "SELECT p.idpersona,p.identificacion,p.nombres,p.apellidos,p.telefono,p.email_user,p.nit,p.nombrefiscal,p.direccionfiscal,r.idrol,r.nombrerol,p.status, DATE_FORMAT(p.datecreated, '%d-%m-%Y') as fechaRegistro 
+			FROM persona p
+			INNER JOIN rol r
+			ON p.rolid = r.idrol
+			WHERE p.idpersona = $this->intIdUsuario";
 			$request = $this->select($sql);
 			return $request;
 		}

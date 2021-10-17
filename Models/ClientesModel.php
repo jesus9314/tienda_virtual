@@ -52,14 +52,18 @@
 		public function selectClientes()
 		{
 
-			$sql = "SELECT * FROM selectClientes ";
-					$request = $this->selectall($sql);
-					return $request;
+			$sql = "SELECT idpersona,identificacion,nombres,apellidos,telefono,email_user,status 
+					FROM persona 
+					WHERE rolid = 7 and status != 0 ";
+			$request = $this->selectall($sql);
+			return $request;
 		}
 		public function selectCliente(int $idusuario)
 		{
 			$this->intIdUsuario = $idusuario;
-			$sql = "SELECT * FROM selectUsuario WHERE idpersona = $this->intIdUsuario";
+			$sql = "SELECT idpersona,identificacion,nombres,apellidos,telefono,email_user,nit,nombrefiscal,direccionfiscal,status, DATE_FORMAT(datecreated, '%d-%m-%Y') as fechaRegistro 
+					FROM persona
+					WHERE idpersona = $this->intIdUsuario and rolid = 7";
 			$request = $this->select($sql);
 			return $request;
 		}
