@@ -13,12 +13,12 @@
     //Plantilla administrativa
     function headerAdmin($data = "")
     {
-        $view_header = "Views/Template/header_admin.php";
+        $view_header = "Views/Template/header_admin_gentella.php";
         require_once($view_header);
     }
     function footerAdmin($data = "")
     {
-        $view_header = "Views/Template/footer_admin.php";
+        $view_header = "Views/Template/footer_admin_gentella.php";
         require_once($view_header);
     }
     //Plantilla e-commerce
