@@ -28,10 +28,8 @@ document.addEventListener('DOMContentLoaded', function(){
 //inicialización de datatable
 	tableUsuarios = $('#tableUsuarios').dataTable({
         "scrollX":true,
-        "stateSave":true,
         "aProcessing":true,
         "aServerSide":true,
-        "stateSave": true,
         "language": 
         {
             "sProcessing":"Procesando...",
@@ -69,12 +67,12 @@ document.addEventListener('DOMContentLoaded', function(){
         },
         "columns":
         [
-            {"data":"idpersona", "width": "5%", "className": "text-center"},
+            {"data":"idpersona", "width": "10%", "className": "text-center"},
             {"data":"nombres", "width": "10%", "className": "text-center"},
             {"data":"apellidos", "width": "10%", "className": "text-center"},
-            {"data":"identificacion", "width": "10%", "className": "text-center"},
-            {"data":"telefono", "width": "10%", "className": "text-center"},
-            {"data":"email_user", "width": "10%", "className": "text-center"},
+            {"data":"identificacion", "width": "5%", "className": "text-center"},
+            {"data":"telefono", "width": "5%", "className": "text-center"},
+            {"data":"email_user", "width": "5%"},
             {"data":"nombrerol",
             "render":
             function(data,row)
@@ -109,9 +107,9 @@ document.addEventListener('DOMContentLoaded', function(){
         "buttons": [
             {
             	"extend": "copyHtml5",
-            	"text":"<i class='far fa-copy'></i> Copiar",
+            	"text":"<i class='fa fa-copy'></i> Copiar",
             	"titleAttr": "Copiar",
-            	"className": "btn btn-secondary",
+            	"className": "btn-sm btn-secondary",
             	"title":"tabla_usuarios",
             	"exportOptions":{
             		"columns": [ 0, 1, 2, 5, 6, 7 ]
@@ -119,9 +117,9 @@ document.addEventListener('DOMContentLoaded', function(){
             },
             {
             	"extend": "excelHtml5",
-            	"text":"<i class='far fa-file-excel'></i> Excel",
+            	"text":"<i class='fa fa-file-excel'></i> Excel",
             	"titleAttr": "Exportar a Excel",
-            	"className": "btn btn-success",
+            	"className": "btn-sm btn-success",
             	"title":"tabla_usuarios",
             	"exportOptions":{
             		"columns": [ 0, 1, 2, 5, 6, 7 ]
@@ -129,9 +127,9 @@ document.addEventListener('DOMContentLoaded', function(){
             },
             {
             	"extend": "pdfHtml5",
-            	"text":"<i class='far fa-file-pdf'></i> PDF",
+            	"text":"<i class='fa fa-file-pdf'></i> PDF",
             	"titleAttr": "Exportar a PDF",
-            	"className": "btn btn-danger",
+            	"className": "btn-sm btn-danger",
             	"messageTop":"Tabla de usuarios",
             	"title":"tabla_usuarios",
             	"exportOptions":{
@@ -140,16 +138,16 @@ document.addEventListener('DOMContentLoaded', function(){
             },
             {
             	"extend": "csvHtml5",
-            	"text":"<i class='fas fa-file-csv'></i> CSV",
+            	"text":"<i class='fa fa-file-csv'></i> CSV",
             	"titleAttr": "Exportar a CSV",
-            	"className": "btn btn-info",
+            	"className": "btn-sm btn-info",
             	"title":"tabla_usuarios",
             	"exportOptions":{
             		"columns": [ 0, 1, 2, 5, 6, 7 ]
             	}
             }
         ],
-        "resonsieve":"true",
+        "responsive":true,
         "bDestroy": true,
         "iDisplayLength": 10,
         "order":[[0,"asc"]] 

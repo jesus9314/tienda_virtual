@@ -11,7 +11,7 @@
     <meta name="author" content="Jesus Inchicaque">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="shortcut icon" href="<?= media();?>/images/favicon.ico">
     <title><?= $data['page_tag'];?></title>
 
     <!-- Bootstrap -->
@@ -37,7 +37,7 @@
     <!-- Custom Theme Style -->
     <link href="<?= media(); ?>gentella/build/css/custom.min.css" rel="stylesheet">
   </head>
-  <body class="nav-md footer_fixed">
+  <body class="nav-md">
 
   <div id="divLoading">
           <div>
@@ -58,10 +58,10 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="<?= media();?>/images/avatar.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Welcome,</span>
+                <span>bienvenido</span>
                 <h2><?= $_SESSION['userData']['nombres']?></h2>
                 <h2><?= $_SESSION['userData']['apellidos'] ?></h2>
               </div>

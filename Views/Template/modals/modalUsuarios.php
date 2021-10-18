@@ -80,7 +80,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <table class="table table-striped table-dark rounded">
+        <table class="table table-striped">
           <tbody>
             <tr>
               <td>Identificación:</td>
