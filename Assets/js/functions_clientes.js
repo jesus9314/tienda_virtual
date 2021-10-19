@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function(){
             	"extend": "copyHtml5",
             	"text":"<i class='far fa-copy'></i> Copiar",
             	"titleAttr": "Copiar",
-            	"className": "btn btn-secondary",
+            	"className": "btn-sm btn-secondary",
             	"title":"tabla_clientes",
             	"exportOptions":{
             		"columns": [ 0, 1, 2, 3, 4, 5]
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function(){
             	"extend": "excelHtml5",
             	"text":"<i class='far fa-file-excel'></i> Excel",
             	"titleAttr": "Exportar a Excel",
-            	"className": "btn btn-success",
+            	"className": "btn-sm btn-success",
             	"title":"tabla_clientes",
             	"exportOptions":{
             		"columns": [ 0, 1, 2, 3, 4, 5]
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function(){
             	"extend": "pdfHtml5",
             	"text":"<i class='far fa-file-pdf'></i> PDF",
             	"titleAttr": "Exportar a PDF",
-            	"className": "btn btn-danger",
+            	"className": "btn-sm btn-danger",
             	"messageTop":"Tabla de usuarios",
             	"title":"tabla_clientes",
             	"exportOptions":{
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function(){
             	"extend": "csvHtml5",
             	"text":"<i class='fas fa-file-csv'></i> CSV",
             	"titleAttr": "Exportar a CSV",
-            	"className": "btn btn-info",
+            	"className": "btn-sm btn-info",
             	"title":"tabla_clientes",
             	"exportOptions":{
             		"columns": [ 0, 1, 2, 3, 4, 5]

@@ -9,21 +9,18 @@
         </button>
       </div>
       <div class="modal-body">
-        <?php 
-          //dep($data);
-         ?>
         <div class="col-md-12">
           <div class="tile">
             <form action="" id="formPermisos" name="formPermisos">
               <input type="hidden" id="idrol" name="idrol" value="<?= $data['idrol']; ?>" required="">
             <div class="table-responsive">
-              <table class="table table-striped table-hover table-dark rounded-bottom" width="100%">
+              <table class="table table-sm table-striped table-hover" width="100%">
                 <thead>
                   <tr>
                     <th>#</th>
                     <th>Módulo</th>
                     <th>Ver <i class="far fa-eye"></i></th>
-                    <th>Crear <i class="far fa-plus-square"></i></i></th>
+                    <th>Crear <i class="far fa-plus-square"></i></th>
                     <th>Actualizar <i class="far fa-edit"></i></th>
                     <th>Eliminar <i class="fas fa-trash"></i></th>
                   </tr>

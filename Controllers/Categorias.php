@@ -106,16 +106,16 @@ class Categorias extends Controllers
 
 					if($_SESSION['permisosMod']['r'])
 					{
-						$btnView = '<button class="btn btn-info btn-sm btnViewCat" onClick="fntViewInfo('.$arrData[$i]['idcategoria'].')" title="Ver usuario"><i class="far fa-eye"></i></button>';
+						$btnView = '<button class="btn btn-info btn-sm btnViewCat" onClick="fntViewInfo('.$arrData[$i]['idcategoria'].')" title="Ver categoria"><i class="far fa-eye"></i></button>';
 					}
 					if($_SESSION['permisosMod']['u'])
 					{
-						$btnEdit = '<button class="btn btn-primary  btn-sm btnEditCat" onClick="fntEditInfo(this,'.$arrData[$i]['idcategoria'].')" title="Editar cliente"><i class="fas fa-pencil-alt"></i></button>';
+						$btnEdit = '<button class="btn btn-primary  btn-sm btnEditCat" onClick="fntEditInfo(this,'.$arrData[$i]['idcategoria'].')" title="Editar categoria"><i class="fas fa-pencil-alt"></i></button>';
 					}
 
 					if($_SESSION['permisosMod']['d'])
 					{
-						$btnDelete = '<button class="btn btn-danger btn-sm btnDeCat" onClick="fntDelInfo('.$arrData[$i]['idcategoria'].')" title="Eliminar usuario"><i class="far fa-trash-alt"></i></button>';		
+						$btnDelete = '<button class="btn btn-danger btn-sm btnDeCat" onClick="fntDelInfo('.$arrData[$i]['idcategoria'].')" title="Eliminar categoria"><i class="far fa-trash-alt"></i></button>';		
 					}
 
 

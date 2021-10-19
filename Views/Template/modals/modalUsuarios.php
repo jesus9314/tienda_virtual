@@ -12,9 +12,8 @@
             <form id="formUsuario" name="formUsuario" class="form-horizontal">
               <input type="hidden" id="idUsuario" name="idUsuario" value="">
               <p class="text-primary">Todos los campos son obligatorios.</p>
-
               <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-12">
                   <label for="txtIdentificacion">Identificación</label>
                   <input type="text" class="form-control" id="txtIdentificacion" name="txtIdentificacion" required="">
                 </div>
@@ -80,7 +79,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <table class="table table-striped">
+        <table class="table table-sm table-striped table-hover">
           <tbody>
             <tr>
               <td>Identificación:</td>

@@ -116,7 +116,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <table class="table table-bordered">
+        <table class="table table-sm table-hover table-striped" style="width:100%">
           <tbody>
             <tr>
               <td>Codigo:</td>
@@ -143,13 +143,13 @@
               <td id="celStatus"></td>
             </tr>
             <tr>
-              <td>Descripción:</td>
-              <td id="celDescripcion"></td>
-            </tr>
-            <tr>
               <td>Fotos de referencia:</td>
               <td id="celFotos">
               </td>
+            </tr>
+            <tr>
+              <td>Descripción:</td>
+              <td id="celDescripcion"></td>
             </tr>
           </tbody>
         </table>

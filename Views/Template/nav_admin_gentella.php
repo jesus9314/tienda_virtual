@@ -30,7 +30,7 @@
 
                   <!--Clientes-->
                   <?php if(!empty($_SESSION['permisos'][3]['r'])){ ?>
-                  <li><a href="javascript:void(0)"><i class="fa fa-user"></i> Clientes </a></li>
+                  <li><a href="<?= base_url();?>/clientes"><i class="fa fa-user"></i> Clientes </a></li>
                   <?php } ?>
 
                   <!--Tienda Main-->

@@ -12,20 +12,20 @@
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h1><?php echo $data['page_tittle'];?></h1> 
+                    <h1><?php echo $data['page_tittle'];?>
+                    <?php if($_SESSION['permisosMod']['w']){ ?>
+                    <span class="float-right"><button class="btn-sm btn-dark" title="Agregar nuevo usuario" type="button" onclick="openModal();"><i class="fa fa-plus-circle"></i> Nuevo Usuario</button></span>
+                    <?php } ?>
+                    </h1> 
                   </div>
                     <div class="x_content">
                       <div class="row">
                         <div class="col-sm-12">
                           <div class="tile">
                             <div class="tile-body">
-                              <?php if($_SESSION['permisosMod']['w']){ ?>
-                              <button class="btn btn-dark" type="button" onclick="openModal();"><i class="fa fa-plus-circle"></i> Nuevo usuario</button>
-                              <?php } ?>
-                              <br>
-                              <br>
+                              </div>
                               <div class="table-responsive">
-                                <table class="table table-hover table-striped" id="tableUsuarios" style="width:100%">
+                                <table class="table table-sm table-hover table-striped" id="tableUsuarios" style="width:100%">
                                   <thead>
                                     <tr>
                                       <th><center>Id</center></th>

@@ -2,50 +2,53 @@
 <?php 
   headerAdmin($data);
   getModal('modalClientes',$data);
-       ?>
-    <main class="app-content">
-      <div class="app-title">
-                <h1>
-                  <i class="fas fa-user-tag"></i>
-                  <?= $data['page_tittle'];?>   <!-- Título de la página-->
-
-                </h1>
-                
-        <ul class="app-breadcrumb breadcrumb">
-          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item"><a href="<?= base_url();?>/clientes"><?= $data['page_tittle'];?></a></li>
-        </ul>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="tile">
-            <div class="tile-body">
-              <?php if($_SESSION['permisosMod']['w']){ ?>
-              <button class="btn btn-primary" type="button" onclick="openModal();"><i class="fas fa-plus-circle"></i> Nuevo Cliente</button>
-            <?php } ?>
-              <br>
-              <br>
-              <div class="table-responsive">
-                <table class="table table-dark table-hover table-striped display nowrap rounded-bottom" id="tableClientes" style="width:100%">
-                  <thead class="border-bottom">
-                    <tr>
-                      <th><center>Id</center></th>
-                      <th><center>Identificación</center></th>
-                      <th><center>Nombres</center></th>
-                      <th><center>Apellidos</center></th>    
-                      <th><center>Email</center></th>
-                      <th><center>Teléfono</center></th>
-                      <th><center>Acciones</center></th>  
-                    </tr>
-                  </thead>
-                </table>
+?>
+    <div class="right_col" role="main">
+          <div class="">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h1><?= $data['page_tittle'];?>
+                    <?php if($_SESSION['permisosMod']['w']){ ?>
+                    <span class="float-right"><button class="btn-sm btn-dark" title="Agregar nuevo cliente" type="button" onclick="openModal();"><i class="fas fa-plus-circle"></i> Nuevo Cliente</button></span>
+                    <?php } ?>
+                  </h1> 
+                  </div>
+                    <div class="x_content">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <div class="tile">
+                            <div class="tile-body">
+                              <div class="table-responsive">
+                              <table class="table table-sm table-hover table-striped" id="tableClientes" style="width:100%">
+                                  <thead>
+                                    <tr>
+                                      <th><center>Id</center></th>
+                                      <th><center>Identificación</center></th>
+                                      <th><center>Nombres</center></th>
+                                      <th><center>Apellidos</center></th>    
+                                      <th><center>Email</center></th>
+                                      <th><center>Teléfono</center></th>
+                                      <th><center>Acciones</center></th>  
+                                    </tr>
+                                  </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
               </div>
-
             </div>
           </div>
         </div>
-      </div>
-    </main>
 
 <!-- Footer-->
 <?php footerAdmin($data); ?>
+
+

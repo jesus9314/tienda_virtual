@@ -109,7 +109,7 @@
 
 					if($_SESSION['permisosMod']['r'])
 					{
-						$btnView = '<button class="btn btn-info btn-sm btnViewUsuario" onClick="fntViewInfo('.$arrData[$i]['idpersona'].')" title="Ver usuario"><i class="far fa-eye"></i></button>';
+						$btnView = '<button class="btn btn-info btn-sm btnViewUsuario" onClick="fntViewInfo('.$arrData[$i]['idpersona'].')" title="Ver cliente"><i class="far fa-eye"></i></button>';
 					}
 					if($_SESSION['permisosMod']['u'])
 					{
@@ -118,7 +118,7 @@
 
 					if($_SESSION['permisosMod']['d'])
 					{
-						$btnDelete = '<button class="btn btn-danger btn-sm btnDeCliente" onClick="fntDelCliente('.$arrData[$i]['idpersona'].')" title="Eliminar usuario"><i class="far fa-trash-alt"></i></button>';		
+						$btnDelete = '<button class="btn btn-danger btn-sm btnDeCliente" onClick="fntDelCliente('.$arrData[$i]['idpersona'].')" title="Eliminar cliente"><i class="far fa-trash-alt"></i></button>';		
 					}
 
 

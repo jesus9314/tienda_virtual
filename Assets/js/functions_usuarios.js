@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function(){
         },
         "columns":
         [
-            {"data":"idpersona", "width": "10%", "className": "text-center"},
+            {"data":"idpersona", "width": "5%", "className": "text-center"},
             {"data":"nombres", "width": "10%", "className": "text-center"},
             {"data":"apellidos", "width": "10%", "className": "text-center"},
             {"data":"identificacion", "width": "5%", "className": "text-center"},
