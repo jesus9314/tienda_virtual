@@ -18,7 +18,7 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div class="tile">
+          <div class="tile" >
             <div class="tile-body">
               <?php if($_SESSION['permisosMod']['w']){ ?>
               <button class="btn btn-primary" type="button" onclick="openModal();"><i class="fas fa-plus-circle"></i> Nuevo usuario</button>
@@ -26,8 +26,8 @@
               <br>
               <br>
               <div class="table-responsive">
-                <table class="table table-dark table-hover table-striped nowrap rounded-bottom" id="tableUsuarios" style="width:100%">
-                  <thead class="border-bottom">
+                <table class="table table-hover table-striped" id="tableUsuarios" style="width:100%">
+                  <thead>
                     <tr>
                       <th><center>Id</center></th>
                       <th><center>Nombres</center></th>

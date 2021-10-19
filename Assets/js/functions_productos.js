@@ -483,6 +483,6 @@ function openModal()
 
 }
 
-setInterval(function () {
+/*setInterval(function () {
     tableProductos.api().ajax.reload(null,false);
-    }, 3000 );
+    }, 3000 );*/

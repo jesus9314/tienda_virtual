@@ -340,6 +340,6 @@ function fntDelInfo(idcategoria){
 
 }
 
-setInterval(function () {
+/*setInterval(function () {
     tableCategorias.api().ajax.reload(null,false);
-    }, 3000 );
+    }, 3000 );*/
