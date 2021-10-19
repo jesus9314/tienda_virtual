@@ -244,7 +244,7 @@ function fntSavePermisos(evnet)
     }
 }
  //actualizar en tiempo real la tabla cada 3 segundos
- setInterval(function () {
+ /*setInterval(function () {
     tableRoles.api().ajax.reload(null,false);
-    }, 3000 );
+    }, 3000 );*/
 

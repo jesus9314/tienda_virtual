@@ -281,6 +281,6 @@ function fntDelCliente(idusuario)
 	            });
 }
 
-setInterval(function () {
+/*setInterval(function () {
     tableClientes.api().ajax.reload(null,false);
-    }, 3000 );
+    }, 3000 );*/
