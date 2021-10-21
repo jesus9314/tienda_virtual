@@ -231,7 +231,7 @@ if(document.querySelector("#txtCodigo")){
 
 tinymce.init({
 	selector: '#txtDescripcion',
-    language_url : '/languages/es_419.js',
+    language: 'es_419',
 	width: "100%",
     height: 400,    
     statubar: true,
@@ -405,7 +405,7 @@ function fntEditInfo(element,idProducto){
                             <img src="${objProductos[p].url_image}"></img>
                             </div>
                             <button type="button" class="btnDeleteImage" onclick="fntDelItem('#div${key}')" imgname="${objProductos[p].img}">
-                            <i class="fas fa-trash-al "></i></button></div>`;
+                            <i class="fas fa-trash"></i></button></div>`;
                     }
                 }
                 document.querySelector("#containerImages").innerHTML = htmlImage; 

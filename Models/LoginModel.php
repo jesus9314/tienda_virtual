@@ -22,7 +22,7 @@
 		{
 			$this->intIdUsuario = $iduser;
 			//buscar rol
-			$sql = "SELECT p.idpersona,p.identificacion,p.nombres,p.apellidos,p.telefono,p.email_user,p.nit,p.nombrefiscal,p.direccionfiscal,r.idrol,r.nombrerol,p.status FROM persona p INNER JOIN rol r on p.rolid = r.idrol WHERE p.idpersona = $this->intIdUsuario";
+			$sql = "SELECT p.idpersona,p.identificacion,p.nombres,p.apellidos,p.telefono,p.email_user,p.img_perfil,p.nit,p.nombrefiscal,p.direccionfiscal,r.idrol,r.nombrerol,p.status FROM persona p INNER JOIN rol r on p.rolid = r.idrol WHERE p.idpersona = $this->intIdUsuario";
 			$request = $this->select($sql);
 			$_SESSION['userData'] = $request;
 			return $request;

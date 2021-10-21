@@ -9,11 +9,13 @@
         </button>
       </div>
       <div class="modal-body">
+        <div class="tile">
             <form id="formCategoria" name="formCategoria" class="form-horizontal">
               <input type="hidden" id="idCategoria" name="idCategoria" value="">
               <input type="hidden" id="foto_actual" name="foto_actual" value="">
               <input type="hidden" id="foto_remove" name="foto_remove" value="0">
               <p class="text-primary">Los campos con asterisco (<span class="required">*</span>) son obligatorios.</p>
+              <hr>
               <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -34,9 +36,9 @@
                 </div>
                 <div class="col-md-6">
                     <div class="photo">
-                        <label for="foto">Foto (570x380)</label>
+                        <label for="foto">Foto <i class="fa fa-photo"></i><small> (Click en la imagen para cambiarla)</small></label>
                         <div class="prevPhoto">
-                          <span class="delPhoto notBlock">X</span>
+                          <span class="delPhoto notBlock"><i class="fa fa-close"></i></span>
                           <label for="foto"></label>
                           <div>
                             <img id="img" src="<?= media(); ?>/images/uploads/portada_categoria.png">
@@ -49,8 +51,8 @@
                     </div>
                 </div>
               </div>
-              
-              <div class="tile-footer">
+              </div>
+              <div class="modal-footer">
                 <button id="btnActionForm" class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i><span id="btnText">Guardar</span></button>&nbsp;&nbsp;&nbsp;
                 <button class="btn btn-danger" type="button" data-dismiss="modal"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cerrar</button>
               </div>
@@ -71,6 +73,7 @@
         </button>
       </div>
       <div class="modal-body">
+        <div class="tile">
         <table class="table table-hover table-striped">
           <tbody>
             <tr>
@@ -95,6 +98,7 @@
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

@@ -9,6 +9,7 @@
         </button>
       </div>
       <div class="modal-body">
+        <div class="tile">
             <form id="formCliente" name="formCliente" class="form-horizontal">
               <input type="hidden" id="idUsuario" name="idUsuario" value="">
               <p class="text-primary">Los campos con asteriscos (<span class="required">*</span>) son obligatorios.</p>
@@ -55,6 +56,7 @@
                   <label>Dirección Fiscal<span class="required">*</span></label>
                   <input class="form-control" type="text" id="txtDirFiscal" name="txtDirFiscal" required="">
                 </div>
+                </div>
              </div>
               <div class="modal-footer">
                 <button id="btnActionForm" class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i><span id="btnText">Guardar</span></button>&nbsp;&nbsp;&nbsp;
@@ -77,7 +79,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <table class="table table-striped table-hover">
+        <div class="tile">
+        <table class="table table-sm table-striped table-hover">
           <tbody>
             <tr>
               <td>Identificación:</td>
@@ -115,8 +118,13 @@
               <td>Fecha registro:</td>
               <td id="celFechaRegistro"></td>
             </tr>
+            <tr>
+              <td>Foto de perfil:</td>
+              <td id="celFotoPerfil"><img src="" id="imgperfil" style="width: 200px;" class="img-fluid img-thumbnail"/> </td>
+            </tr>
           </tbody>
         </table>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

@@ -14,6 +14,7 @@
 		private $strNit;
 		private	$strNombreFiscal;
 		private	$strDirFiscal;
+		private $strImgPerfil;
 
 		public function __construct()
 		{
@@ -36,8 +37,8 @@
 
 			if(empty($request))
 			{
-				$query_insert = "INSERT INTO persona (identificacion,nombres,apellidos,telefono,email_user,password,rolid,status) VALUES(?,?,?,?,?,?,?,?)";
-				$arrData = array($this->strIdentificacion,$this->strNombre,$this->strApellido,$this->intTelefono,$this->strEmail,$this->strPassworrd,$this->intTipoId,$this->intStatus);
+				$query_insert = "INSERT INTO persona (identificacion,nombres,apellidos,telefono,email_user,img_perfil,password,rolid,status) VALUES(?,?,?,?,?,?,?,?,?)";
+				$arrData = array($this->strIdentificacion,$this->strNombre,$this->strApellido,$this->intTelefono,$this->strEmail,'user.png',$this->strPassworrd,$this->intTipoId,$this->intStatus);
 				$request_insert = $this->insert($query_insert, $arrData);
 				$return = $request_insert;
 			}
@@ -64,7 +65,7 @@
 		public function selectUsuario(int $idusuario)
 		{
 			$this->intIdUsuario = $idusuario;
-			$sql = "SELECT p.idpersona,p.identificacion,p.nombres,p.apellidos,p.telefono,p.email_user,p.nit,p.nombrefiscal,p.direccionfiscal,r.idrol,r.nombrerol,p.status, DATE_FORMAT(p.datecreated, '%d-%m-%Y') as fechaRegistro 
+			$sql = "SELECT p.idpersona,p.identificacion,p.nombres,p.apellidos,p.telefono,p.email_user,p.img_perfil,p.nit,p.nombrefiscal,p.direccionfiscal,r.idrol,r.nombrerol,p.status, DATE_FORMAT(p.datecreated, '%d-%m-%Y') as fechaRegistro 
 			FROM persona p
 			INNER JOIN rol r
 			ON p.rolid = r.idrol
@@ -127,24 +128,25 @@
 			$request = $this->update($sql, $arrData);
 			return $request;
 		}
-		public function updatePerfil(int $idusuario, string $identificacion, string $nombre,string $apellido, int $telefono, string $password)
+		public function updatePerfil(int $idusuario, string $identificacion, string $nombre,string $apellido, int $telefono,string $img_perfil,string $password)
 		{
 			$this->intIdUsuario = $idusuario;
 			$this->strIdentificacion = $identificacion;
 			$this->strNombre = $nombre;
 			$this->strApellido = $apellido;
 			$this->intTelefono = $telefono;
+			$this->strImgPerfil = $img_perfil;
 			$this->strPassword = $password;
 
 			if($this->strPassword != "")
 			{
-				$sql = "UPDATE persona SET identificacion=?, nombres=?, apellidos=?, telefono=?, password=? WHERE idpersona = $this->intIdUsuario";
-				$arrData = array($this->strIdentificacion,$this->strNombre,$this->strApellido,$this->intTelefono,$this->strPassword);
+				$sql = "UPDATE persona SET identificacion=?, nombres=?, apellidos=?, telefono=?,img_perfil=?, password=? WHERE idpersona = $this->intIdUsuario";
+				$arrData = array($this->strIdentificacion,$this->strNombre,$this->strApellido,$this->intTelefono,$this->strImgPerfil,$this->strPassword);
 			}
 			else
 			{
-				$sql = "UPDATE persona SET identificacion=?, nombres=?, apellidos=?, telefono=? WHERE idpersona = $this->intIdUsuario";
-				$arrData = array($this->strIdentificacion,$this->strNombre,$this->strApellido,$this->intTelefono);
+				$sql = "UPDATE persona SET identificacion=?, nombres=?, apellidos=?, telefono=?,img_perfil=? WHERE idpersona = $this->intIdUsuario";
+				$arrData = array($this->strIdentificacion,$this->strNombre,$this->strApellido,$this->intTelefono,$this->strImgPerfil);
 			}
 			$request = $this->update($sql, $arrData);
 			return $request;

@@ -38,8 +38,8 @@
 
 			if(empty($request))
 			{
-				$query_insert = "INSERT INTO persona (identificacion,nombres,apellidos,telefono,email_user,password,rolid,nit, nombrefiscal, direccionfiscal) VALUES(?,?,?,?,?,?,?,?,?,?)";
-				$arrData = array($this->strIdentificacion,$this->strNombre,$this->strApellido,$this->intTelefono,$this->strEmail,$this->strPassworrd,$this->intTipoId,$this->strNit,$this->strNombreFiscal,$this->strDirFiscal);
+				$query_insert = "INSERT INTO persona (identificacion,nombres,apellidos,telefono,email_user,img_perfil,password,rolid,nit, nombrefiscal, direccionfiscal) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+				$arrData = array($this->strIdentificacion,$this->strNombre,$this->strApellido,$this->intTelefono,$this->strEmail,'user.png',$this->strPassworrd,$this->intTipoId,$this->strNit,$this->strNombreFiscal,$this->strDirFiscal);
 				$request_insert = $this->insert($query_insert, $arrData);
 				$return = $request_insert;
 			}
@@ -61,7 +61,7 @@
 		public function selectCliente(int $idusuario)
 		{
 			$this->intIdUsuario = $idusuario;
-			$sql = "SELECT idpersona,identificacion,nombres,apellidos,telefono,email_user,nit,nombrefiscal,direccionfiscal,status, DATE_FORMAT(datecreated, '%d-%m-%Y') as fechaRegistro 
+			$sql = "SELECT idpersona,identificacion,nombres,apellidos,telefono,email_user,img_perfil,nit,nombrefiscal,direccionfiscal,status, DATE_FORMAT(datecreated, '%d-%m-%Y') as fechaRegistro 
 					FROM persona
 					WHERE idpersona = $this->intIdUsuario and rolid = 7";
 			$request = $this->select($sql);

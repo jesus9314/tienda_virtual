@@ -9,9 +9,12 @@
         </button>
       </div>
       <div class="modal-body">
+        
             <form id="formProductos" name="formProductos" class="form-horizontal">
+              <div class="tile">
               <input type="hidden" id="idProducto" name="idProducto" value="">
               <p class="text-primary">Los campos con asterisco (<span class="required">*</span>) son obligatorios.</p>
+              <hr>
               <div class="row">
                 <div class="col-md-8">
                     <div class="form-group">
@@ -39,11 +42,11 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label class="control-label">Precio <span class="required">*</span></label>
-                            <input class="form-control" id="txtPrecio" name="txtPrecio" type="text" required="">
+                            <input class="form-control" id="txtPrecio" name="txtPrecio" type="text" required="" placeholder="0.0">
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label">Stock <span class="required">*</span></label>
-                            <input class="form-control" id="txtStock" name="txtStock" type="text" required="">
+                            <input class="form-control" id="txtStock" name="txtStock" type="text" required="" placeholder="0">
                         </div>
                     </div>
 
@@ -95,6 +98,7 @@
                  </div>
                                 
               </div>
+              </div>
               <div class="modal-footer">
                 <button id="btnActionForm" class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i><span id="btnText">Guardar</span></button>
                 <button class="btn btn-danger" type="button" data-dismiss="modal"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cerrar</button>
@@ -116,43 +120,58 @@
         </button>
       </div>
       <div class="modal-body">
-        <table class="table table-sm table-hover table-striped" style="width:100%">
-          <tbody>
-            <tr>
-              <td>Codigo:</td>
-              <td id="celCodigo"></td>
-            </tr>
-            <tr>
-              <td>Nombres:</td>
-              <td id="celNombre"></td>
-            </tr>
-            <tr>
-              <td>Precio:</td>
-              <td id="celPrecio"></td>
-            </tr>
-            <tr>
-              <td>Stock:</td>
-              <td id="celStock"></td>
-            </tr>
-            <tr>
-              <td>Categoría:</td>
-              <td id="celCategoria"></td>
-            </tr>
-            <tr>
-              <td>Status:</td>
-              <td id="celStatus"></td>
-            </tr>
-            <tr>
-              <td>Fotos de referencia:</td>
-              <td id="celFotos">
-              </td>
-            </tr>
-            <tr>
-              <td>Descripción:</td>
-              <td id="celDescripcion"></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="tile">
+          <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Info</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Descripcion</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Fotos</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <br>
+            <table class="table table-hover table-striped" style="width:100%">
+              <tbody>
+                <tr>
+                  <td>Codigo:</td>
+                  <td id="celCodigo"></td>
+                </tr>
+                <tr>
+                  <td>Nombres:</td>
+                  <td id="celNombre"></td>
+                </tr>
+                <tr>
+                  <td>Precio:</td>
+                  <td id="celPrecio"></td>
+                </tr>
+                <tr>
+                  <td>Stock:</td>
+                  <td id="celStock"></td>
+                </tr>
+                <tr>
+                  <td>Categoría:</td>
+                  <td id="celCategoria"></td>
+                </tr>
+                <tr>
+                  <td>Status:</td>
+                  <td id="celStatus"></td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div id="celDescripcion"></div>
+            </div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <div id="celFotos"></div>
+            </div>
+          </div>
+          </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -161,3 +180,4 @@
   </div>
 </div>
 
+                  

@@ -78,7 +78,7 @@
 							$arrResponse = array('status' => true, 'msg' => 'Datos guardados correctamente.');
 							$nombreUsuario = $strNombre.' '.$strApellido;
 							$dataUsuario = array('nombreUsuario' => $nombreUsuario, 'email' => $strEmail,'password' => $strPassworrd, 'asunto' => 'Bienvenido a tu tienda en línea');
-							sendEmail($dataUsuario, 'email_bienvenida');
+							//sendEmail($dataUsuario, 'email_bienvenida');
 						}
 						else
 						{

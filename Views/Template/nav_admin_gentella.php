@@ -30,7 +30,7 @@
 
                   <!--Clientes-->
                   <?php if(!empty($_SESSION['permisos'][3]['r'])){ ?>
-                  <li><a href="<?= base_url();?>/clientes"><i class="fa fa-user"></i> Clientes </a></li>
+                  <li><a href="<?= base_url();?>/clientes"><i class="fa fa-child"></i> Clientes </a></li>
                   <?php } ?>
 
                   <!--Tienda Main-->
@@ -90,7 +90,7 @@
                 <ul class=" navbar-right">
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                      <img src="<?= media();?>/images/avatar.png" alt=""><?= $_SESSION['userData']['nombres']?>
+                      <img src='<?= media();?>/images/uploads/users_img/<?= $_SESSION["userData"]["img_perfil"]?>' alt=""><?= $_SESSION['userData']['nombres']?>
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="<?= base_url();?>/usuarios/perfil"> Perfil</a>

@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function(){
             	}
             }
         ],
-        "resonsieve":"true",
+        "responsive":"true",
         "bDestroy": true,
         "iDisplayLength": 10,
         "order":[[0,"asc"]] 
@@ -199,6 +199,7 @@ function fntViewInfo(idusuario)
 				document.querySelector('#celNomFiscal').innerHTML = objData.data.nombrefiscal;
 				document.querySelector('#celDirFiscal').innerHTML = objData.data.direccionfiscal;
 				document.querySelector('#celFechaRegistro').innerHTML = objData.data.fechaRegistro;
+				document.querySelector('#imgperfil').src=base_url+"/Assets/images/uploads/users_img/"+objData.data.img_perfil;
 				$('#modalViewCliente').modal('show');
 			}
 			else

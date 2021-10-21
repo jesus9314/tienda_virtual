@@ -33,6 +33,7 @@
         <!-- Page specific javascripts-->
     <script type="text/javascript" src="<?= media(); ?>js/plugins/sweetalert.min.js"></script>
      <script type="text/javascript" src="<?= media(); ?>/js/tinymce/tinymce.min.js"></script>
+     <script type="text/javascript" src="<?= media(); ?>/js/tinymce/langs/es_419.js"></script>
 
     <script src="<?= media(); ?>gentella/vendors/jszip/dist/jszip.min.js"></script>
     <script src="<?= media(); ?>gentella/vendors/pdfmake/build/pdfmake.min.js"></script>

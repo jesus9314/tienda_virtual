@@ -94,6 +94,13 @@
         $move = move_uploaded_file($url_temp, $destino);
         return $move;
     }
+    function upload_img_profile(array $data, string $name)
+    {
+        $url_temp = $data['tmp_name'];
+        $destino = 'Assets/images/uploads/users_img/'.$name;
+        $move = move_uploaded_file($url_temp, $destino);
+        return $move;
+    }
     function deleteFile(string $name){
         unlink('Assets/images/uploads/'.$name);
     }

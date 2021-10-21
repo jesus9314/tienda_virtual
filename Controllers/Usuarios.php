@@ -209,16 +209,29 @@
 					$strApellido = strClean($_POST['txtApellido']);
 					$intTelefono = intval(strClean($_POST['txtTelefono']));
 					$strPassword ="";
+
+					$foto = $_FILES['foto'];
+					$nombre_foto =$foto['name'];
+					$type =$foto['type'];
+					$url_temp =$foto['tmp_name'];
+					$img_perfil = 'user.png';
+
+					if($nombre_foto != '')
+					{
+						$img_perfil='img'.md5(date('d-m-y H:m:s')).'.jpg';
+					}
+
 					if(!empty($_POST['txtPassword']))
 					{
 						$strPassword = hash("SHA256", $_POST['txtPassword']);
 					}
-					$request_user = $this->model->updatePerfil($idUsuario,$strIdentificacion,$strNombre,$strApellido,$intTelefono,$strPassword);
+					$request_user = $this->model->updatePerfil($idUsuario,$strIdentificacion,$strNombre,$strApellido,$intTelefono,$img_perfil,$strPassword);
 
 					if($request_user)
 					{
 						sessionUser($_SESSION['idUser']);
 						$arrResponse = array('status' => true, 'msg' => 'Datos Actualizados correctamente.');
+						if($nombre_foto != ''){upload_img_profile($foto,$img_perfil);}
 					}
 					else
 					{
