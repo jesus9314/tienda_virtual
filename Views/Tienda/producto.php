@@ -19,7 +19,8 @@ $arrImages = $arrProducto['images'];
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
 			<span class="stext-109 cl4">
-				<?= $arrProducto['nombre'] ?>
+				<?= $arrProducto['nombre'] ?>/
+				<?= $arrProducto['idproducto'] ?>
 			</span>
 		</div>
 	</div>
@@ -140,9 +141,13 @@ $arrImages = $arrProducto['images'];
 				<div class="slick2">
 
 				<?php 
+				$main= $arrProducto['idproducto'];
 					if(!empty($arrProductos)){
 						for ($p=0; $p < count($arrProductos); $p++) {
+							$id=$arrProductos[$p]['idproducto'];
 							$ruta = $arrProductos[$p]['ruta'];
+							if($id != $main)
+							{
 							if(count($arrProductos[$p]['images']) > 0 ){
 								$portada = $arrProductos[$p]['images'][0]['url_image'];
 							}else{
@@ -173,7 +178,11 @@ $arrImages = $arrProducto['images'];
 						</div>
 					</div>
                     
-				<?php  } ?>
+				<?php  
+							}
+						else{} } 
+					
+					?>
 						
 				<?php	} ?>
 
