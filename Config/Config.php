@@ -35,5 +35,8 @@
 	const KEY="tienda_virtual";
 	const METHODENCRIPT="AES-128-ECB";
 
+	//Envío
+	const COSTOENVIO = 10;
+
 
  ?>

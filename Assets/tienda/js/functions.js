@@ -52,24 +52,44 @@ $('.js-addcart-detail').each(function(){
             swal("","La cantidad debe ser mayor o igual que 1", "error");
             return;
         }
-        let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-        let ajaxUrl = base_url+'/Tienda/addCarrito';
-        let formData = new FormData();
-        formData.append('id',id);
-        formData.append('cant',cant);
-
-        request.open("POST",ajaxUrl,true);
-        request.send(formData);
-        request.onreadystatechange = function(){
-            if(request.readyState != 4) return;
-            if(request.status == 200)
+        swal({
+            title: `${nameProduct} x ${cant}`,
+            text: `¿Deseas agregar este producto a su carrito de compras?`,
+            type: "info",
+            showCancelButton: true,
+            confirmButtonText: "Si, agregar!",
+            cancelButtonText: "No, cancelar!",
+            closeOnConfirm: false,
+            closeOnCancel: true
+        }, function(isConfirm){
+            if(isConfirm)
             {
-                console.log(request.responseText);
-            }
-            return false;
-        }
+                let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+                let ajaxUrl = base_url+'/Tienda/addCarrito';
+                let formData = new FormData();
+                formData.append('id',id);
+                formData.append('cant',cant);
 
-        swal(`${nameProduct} x ${cant}`, "ha sido añadido a tu carrito!", "success");
+                request.open("POST",ajaxUrl,true);
+                request.send(formData);
+                request.onreadystatechange = function(){
+                    if(request.readyState != 4) return;
+                    if(request.status == 200)
+                    {
+                        let objData = JSON.parse(request.responseText);
+                        if(objData.status){
+                            document.querySelector('#productosCarrito').innerHTML = objData.htmlCarrito;
+                            document.querySelector('#cantCarrito').setAttribute("data-notify",objData.cantCarrito);
+                            swal(`${nameProduct} x ${cant}`, "ha sido añadido a tu carrito!", "success");
+                        }
+                        else{
+                            swal("",objData.msg, "error");
+                        }
+                    }
+                    return false;
+                }
+            }
+        });
     });
 });
 $('.js-pscroll').each(function(){
@@ -85,3 +105,46 @@ $('.js-pscroll').each(function(){
         ps.update();
     })
 });
+
+function fntdelItem(element){
+	//Option 1 = Modal
+	//Option 2 = Vista Carrito
+	let option = element.getAttribute("op");
+	let idpr = element.getAttribute("idpr");
+	if(option == 1 || option == 2 ){
+
+		let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+	    let ajaxUrl = base_url+'/Tienda/delCarrito'; 
+	    let formData = new FormData();
+	    formData.append('id',idpr);
+	    formData.append('option',option);
+	    request.open("POST",ajaxUrl,true);
+	    request.send(formData);
+	    request.onreadystatechange = function(){
+	        if(request.readyState != 4) return;
+	        if(request.status == 200){
+	        	let objData = JSON.parse(request.responseText);
+	        	if(objData.status){
+	        		if(option == 1){
+			            document.querySelector("#productosCarrito").innerHTML = objData.htmlCarrito;
+			            const cants = document.querySelectorAll("#cantCarrito");
+						cants.forEach(element => {
+							element.setAttribute("data-notify",objData.cantCarrito)
+						});
+	        		}else{
+	        			element.parentNode.parentNode.remove();
+	        			document.querySelector("#subTotalCompra").innerHTML = objData.subTotal;
+	        			document.querySelector("#totalCompra").innerHTML = objData.total;
+	        			if(document.querySelectorAll("#tblCarrito tr").length == 1){
+	            			window.location.href = base_url;
+	            		}
+	        		}
+	        	}else{
+	        		swal("", objData.msg , "error");
+	        	}
+	        } 
+	        return false;
+	    }
+
+	}
+}

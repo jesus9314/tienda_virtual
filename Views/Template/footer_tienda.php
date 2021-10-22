@@ -141,7 +141,8 @@
 <!--===============================================================================================-->
 	<script src="<?= media()?>tienda/vendor/isotope/isotope.pkgd.min.js"></script>
 <!--===============================================================================================-->
-	<script src="<?= media()?>tienda/vendor/sweetalert/sweetalert.min.js"></script>
+	<script type="text/javascript" src="<?= media(); ?>js/plugins/sweetalert.min.js"></script>
+	<!--<script src="<?= media()?>tienda/vendor/sweetalert/sweetalert.min.js"></script>-->
 <!--===============================================================================================-->
 	<script src="<?= media()?>tienda/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <!--===============================================================================================-->
