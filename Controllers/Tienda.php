@@ -58,5 +58,22 @@
 				$this->views->getView($this,"producto",$data);
 			}
 		}
+		public function addCarrito()
+		{
+			if($_POST){
+				$idproducto = openssl_decrypt($_POST['id'],METHODENCRIPT,KEY);
+				$cantidad = $_POST['cant'];
+				if(is_numeric($idproducto) and is_numeric($cantidad))
+				{
+					$arrInfoProducto = $this->getProductoIDT($idproducto);
+				}
+				else
+				{
+					$arrResponse = array("status" => false, "msg" => "Dato incorrecto");
+				}
+				echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+			}
+			die();
+		}
 	}
  ?>

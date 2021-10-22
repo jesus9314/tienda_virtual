@@ -32,5 +32,8 @@
 	const CAT_SLIDER="1,2,3";
 	const CAT_BANNER="4,5,6";
 
+	const KEY="tienda_virtual";
+	const METHODENCRIPT="AES-128-ECB";
+
 
  ?>
