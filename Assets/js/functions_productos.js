@@ -1,4 +1,4 @@
-document.write(`<script src="${base_url}/Assets/js/plugins/JsBarcode.all.min.js"></script>`);
+    document.write(`<script src="${base_url}/Assets/js/plugins/JsBarcode.all.min.js"></script>`);
 let tableProductos;
 $(document).on('focusin', function(e) {
     if ($(e.target).closest(".tox-dialog").length) {
@@ -174,18 +174,10 @@ window.addEventListener('load', function() {
                     {
                         swal("", objData.msg ,"success");
                         document.querySelector("#idProducto").value = objData.idproducto;
-                        document.querySelector("#containerGallery").classList.remove("notblock");
+                        document.querySelector("#containerGallery").classList.remove("notBlock");
                         $('#modalFormProductos').modal('hide');
                         tableProductos.api().ajax.reload(null,false);
-
-                        if(rowTable == ""){
-                            tableProductos.api().ajax.reload(null,false);
-                            
-                        }else{
-                           htmlStatus = intStatus == 1 ? 
-                            '<span class="badge badge-success">Activo</span>' : 
-                            '<span class="badge badge-danger">Inactivo</span>';
-                        }
+                        htmlStatus = intStatus == 1 ? '<span class="badge badge-success">Activo</span>' : '<span class="badge badge-danger">Inactivo</span>';
                     }else{
                         swal("Error", objData.msg , "error");
                     }
@@ -410,7 +402,7 @@ function fntEditInfo(element,idProducto){
                 }
                 document.querySelector("#containerImages").innerHTML = htmlImage; 
                 document.querySelector("#divBarCode").classList.remove("notblock");
-                document.querySelector("#containerGallery").classList.remove("notblock");           
+                document.querySelector("#containerGallery").classList.remove("notBlock");           
                 $('#modalFormProductos').modal('show');
             }else{
                 swal("Error", objData.msg , "error");

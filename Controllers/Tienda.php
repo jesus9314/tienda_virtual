@@ -46,17 +46,20 @@
 				$arrParams = explode(",",$params);
 				$idproducto = intval($arrParams[0]);
 				$ruta = strClean($arrParams[1]);
+				$ruta = clear_route($ruta);
 				$infoProducto = $this->getProductoT($idproducto,$ruta);
 				if(empty($infoProducto))
 				{
 					header("Location:".base_url());
 				}
+				else{
 				$data['page_tag'] = NOMBRE_EMPRESA." - ".$infoProducto['nombre'];
 				$data['page_title'] = $infoProducto['nombre'];
 				$data['page_name'] = "producto";
 				$data['producto'] = $infoProducto;
 				$data['productos'] = $this->getProductosRandom($infoProducto['categoriaid'],8,"r");
 				$this->views->getView($this,"producto",$data);
+				}
 			}
 		}
 		public function addCarrito()

@@ -144,17 +144,40 @@
         $string = str_ireplace("==","",$string);
         return $string;
     }
+    //limpiar ruta
+    function clear_route(string $ruta){
+
+        //eliminamos todos los espacios
+        $ruta = str_replace(" ","",$ruta);
+        //eliminamos los guiones dobles
+        $ruta = str_replace("--","",$ruta);
+        //eliminamos los guiones triples
+        $ruta = str_replace("---","",$ruta);
+        //cambiamos todo a minuscula
+        $ruta = strtolower($ruta);
+
+        return $ruta;
+    }
+
     //Limpia el nombre para convertirlo en la url
     function clear_cadena(string $cadena){
 
-        //eliminamos los slash
+        //eliminamos los símbolos que puedan afectar
         $cadena= str_replace("/","",$cadena);
-
-         //eliminamos los guiones
-         $cadena= str_replace("-","",$cadena);
-
-        //eliminamos las comillas
+        $cadena= str_replace("-","",$cadena);
+        $cadena= str_replace("--","",$cadena);
+        $cadena= str_replace("---","",$cadena);
+        $cadena= str_replace("-","",$cadena);
+        $cadena= str_replace("--","",$cadena);
+        $cadena= str_replace("---","",$cadena);
+        $cadena= str_replace("+","",$cadena);
         $cadena= str_replace('"','',$cadena);
+        $cadena= str_replace("^","",$cadena);
+        $cadena= str_replace("$","",$cadena);
+        $cadena= str_replace("[","",$cadena);
+        $cadena= str_replace("]","",$cadena);
+        $cadena= str_replace("==","",$cadena);
+        $cadena= str_replace("  ","-",$cadena);
 
         //Reemplazamos la A y a
         $cadena = str_replace(

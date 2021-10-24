@@ -9,7 +9,6 @@
 
     <title><?= $data['page_tag']; ?></title>
     <!-- Main CSS-->
-    <link rel="stylesheet" type="text/css" href="<?= media(); ?>css/main.css">
     <link rel="stylesheet" type="text/css" href="<?= media(); ?>css/style.css">
     <link rel="shortcut icon" href="<?= media(); ?>images/favicon.ico">
 
@@ -94,7 +93,7 @@
 
                 <div>
                   <h1><i class="fa fa-paw"></i>Tienda Virtual</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                  <p>©2021 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
                 </div>
               </div>
             </form>
