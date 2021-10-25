@@ -44,7 +44,6 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= media()?>tienda/css/style.css">
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="<?php echo media();?>/css/main.css">
 </head>
 <body class="animsition">
 	
