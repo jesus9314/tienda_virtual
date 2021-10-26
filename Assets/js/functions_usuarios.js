@@ -540,7 +540,7 @@ function fntDelUsuario(idusuario)
 	            });
 }
 
-/*setInterval(function () {
+/* setInterval(function () {
     tableUsuarios.api().ajax.reload(null,false);
     }, 3000 );*/
 

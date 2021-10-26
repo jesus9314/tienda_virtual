@@ -40,6 +40,7 @@
     <script src="<?= media(); ?>gentella/vendors/pdfmake/build/vfs_fonts.js"></script>
     <!-- Bootstrap-select-->
     <script type="text/javascript" src="<?= media(); ?>js/plugins/bootstrap-select.min.js"></script>
+    <script type="text/javascript" lenguage="javascript" src="//cdn.datatables.net/plug-ins/1.11.3/api/fnReloadAjax.js"></script>
     <!-- ExportDatatables-->
     <script type="text/javascript" lenguage="javascript" src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
     <script type="text/javascript" lenguage="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
