@@ -13,7 +13,7 @@ if(isset($_SESSION['arrCarrito']) and count($_SESSION['arrCarrito']) > 0){
 			<img src="<?= $producto['imagen'] ?>" alt="<?= $producto['producto'] ?>">
 		</div>
 		<div class="header-cart-item-txt p-t-8">
-			<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+			<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04 name_products">
 				<?= $producto['producto'] ?>
 			</a>
 			<span class="header-cart-item-info">
@@ -27,7 +27,6 @@ if(isset($_SESSION['arrCarrito']) and count($_SESSION['arrCarrito']) > 0){
 	<div class="header-cart-total w-full p-tb-40">
 		Total: <?= SMONEY.formatMoney($total); ?>
 	</div>
-
 	<div class="header-cart-buttons flex-w w-full">
 		<a href="<?= base_url() ?>/carrito" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
 			Ver carrito
