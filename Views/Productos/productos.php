@@ -20,7 +20,7 @@
                           <div class="tile">
                             <div class="tile-body">
                               <div class="table-responsive">
-                              <table class="table table-sm table-hover table-striped " id="tableProductos" style="width:100%">
+                              <table class="table table-sm responsive table-hover table-striped table-bordered" id="tableProductos" style="width:100%">
                                   <thead>
                                     <tr>
                                       <th><center>ID</center></th>

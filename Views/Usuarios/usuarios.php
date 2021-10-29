@@ -25,7 +25,7 @@
                             <div class="tile-body">
                               </div>
                               <div class="table-responsive">
-                                <table class="table table-sm table-hover table-striped display responsive nowrap" id="tableUsuarios" style="width:100%">
+                                <table class="table table-sm responsive table-hover table-striped table-bordered" id="tableUsuarios" style="width:100%">
                                   <thead>
                                     <tr>
                                       <th><center>Id</center></th>

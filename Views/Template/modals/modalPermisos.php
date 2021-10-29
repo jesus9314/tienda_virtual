@@ -5,7 +5,7 @@
       <div class="modal-header">
         <h5 class="modal-title h4" id="myExtraLargeModalLabel">Permisos de Roles de usuario</h5>
         <button type="button" class="close" data-dismiss="modal" arial-label="close">
-          <span aria-hidden="true">x</span>
+          <span aria-hidden="true"><i class="fa fa-close"></i></span>
         </button>
       </div>
       <div class="modal-body">
@@ -14,15 +14,15 @@
             <form action="" id="formPermisos" name="formPermisos">
               <input type="hidden" id="idrol" name="idrol" value="<?= $data['idrol']; ?>" required="">
             <div class="table-responsive">
-              <table class="table table-sm table-striped table-hover" width="100%">
+              <table class="table table-sm responsive table-hover table-striped table-bordered" width="100%">
                 <thead>
                   <tr>
-                    <th>#</th>
-                    <th>Módulo</th>
-                    <th>Ver <i class="far fa-eye"></i></th>
-                    <th>Crear <i class="far fa-plus-square"></i></th>
-                    <th>Actualizar <i class="far fa-edit"></i></th>
-                    <th>Eliminar <i class="fas fa-trash"></i></th>
+                    <th><center>#</center></th>
+                    <th><center>Módulo</center></th>
+                    <th><center>Ver <i class="far fa-eye"></i></center></th>
+                    <th><center>Crear <i class="far fa-plus-square"></center></i></th>
+                    <th><center>Actualizar <i class="far fa-edit"></center></i></th>
+                    <th><center>Eliminar <i class="fas fa-trash"></center></i></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -40,41 +40,53 @@
                    ?>
                   <tr>
                     <td>
+                      <center>
                       <?= $no; ?>
                       <input type="hidden" name="modulos[<?= $i; ?>][idmodulo]" value="<?= $idmod; ?>" required>
+                      </center>
                     </td>
                     <td>
-                      <?= 
+                     <center>
+                     <?= 
                         $modulos[$i]['titulo'];
                       ?>
+                     </center>
                     </td>
                     <td>
+                      <center>
                       <div class="toggle-flip">
                         <label>
                           <input type="checkbox" name="modulos[<?= $i; ?>][r]" <?= $rCheck ?>><span class="flip-indecator" data-toggle-on="ON" data-toggle-off="OFF"></span>
                         </label>
                       </div>
+                      </center>
                     </td>
                     <td>
+                      <center>
                       <div class="toggle-flip">
                         <label>
                           <input type="checkbox" name="modulos[<?= $i; ?>][w]" <?= $wCheck ?>><span class="flip-indecator" data-toggle-on="ON" data-toggle-off="OFF"></span>
                         </label>
                       </div>
+                      </center>
                     </td>
                     <td>
+                      <center>
                       <div class="toggle-flip">
                         <label>
                           <input type="checkbox" name="modulos[<?= $i; ?>][u]" <?= $uCheck ?>><span class="flip-indecator" data-toggle-on="ON" data-toggle-off="OFF"></span>
                         </label>
                       </div>
+                      </center>
                     </td>
                     <td>
+                      <center>
                       <div class="toggle-flip">
                         <label>
                           <input type="checkbox" name="modulos[<?= $i; ?>][d]" <?= $dCheck ?>><span class="flip-indecator" data-toggle-on="ON" data-toggle-off="OFF"></span>
                         </label>
                       </div>
+                      </center>
                     </td>
                   </tr>
                   <?php 

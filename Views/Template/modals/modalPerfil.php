@@ -5,7 +5,7 @@
       <div class="modal-header headerUpdate">
         <h5 class="modal-title" id="titleModal">Actualizar Datos</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+        <i class="fa fa-close"></i>
         </button>
       </div>
       <div class="modal-body">
