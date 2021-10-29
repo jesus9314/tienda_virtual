@@ -53,7 +53,7 @@ let producto = {
             }
         }
     },//fin ViewProduct
-    EditProduct: (idProducto) => {
+    EditProduct: (element,idProducto) => {
         document.querySelector('#titleModal').innerHTML ="Actualizar Producto";
         document.querySelector('.modal-header').classList.replace("headerRegister", "headerUpdate");
         document.querySelector('#btnActionForm').classList.replace("btn-primary", "btn-info");
@@ -378,7 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
         inputCodigo.onkeyup = () => {
             if(inputCodigo.value.length >= 5){
                 document.querySelector('#divBarCode').classList.remove("notBlock");
-                fntBarcode();
+                page.BarCode();
            }else{
                 document.querySelector('#divBarCode').classList.add("notBlock");
            }
@@ -461,7 +461,7 @@ window.addEventListener('load', () => {
             <label for="img${key}" class="btnUploadfile"><i class="fas fa-upload "></i></label>
             <button class="btnDeleteImage notblock" type="button" onclick="fntDelItem('#div${key}')"><i class="fas fa-trash-alt"></i></button>`;
         document.querySelector("#containerImages").appendChild(newElement);
-        document.querySelector("#div"+key+" .btnUploadfile").click();
+        document.querySelector(`#div${key} .btnUploadfile`).click();
         page.InputFile();
        }
     }

@@ -33,7 +33,7 @@ let categorias =
         }
     }
   },  
-  EditInfo: (idcategoria) => {
+  EditInfo: (element,idcategoria) => {
     document.querySelector('#titleModal').innerHTML ="Actualizar Categoría";
     document.querySelector('.modal-header').classList.replace("headerRegister", "headerUpdate");
     document.querySelector('#btnActionForm').classList.replace("btn-primary", "btn-info");

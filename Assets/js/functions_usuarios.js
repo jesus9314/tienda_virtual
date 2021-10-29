@@ -75,17 +75,15 @@ document.addEventListener('DOMContentLoaded', function(){
             {"data":"email_user", "width": "5%"},
             {"data":"nombrerol",
             "render":
-            function(data,row)
-            {
-            	if(data == 'Administrador')
-            	{
-            		return '<span class="badge bg-warning text-dark">'+data+'</span>';
-            	}
-            	else
-            	{
-            		return data;
-            	}
-            },
+            (data) => {
+					if (data == 'Administrador') {
+						return '<span class="badge bg-warning text-dark">' + data + '</span>';
+					}
+
+					else {
+						return data;
+					}
+				},
              "width": "10%", "className": "text-center"},
             
             {"data":"status",
