@@ -1,4 +1,208 @@
 'use strict'
+document.addEventListener('DOMContentLoaded', () => {
+
+    //datatable PRODUCTOS
+    tableProductos = $('#tableProductos').dataTable({
+        "scrollX":true,
+        "stateSave":true,
+        "aProcessing":true,
+        "stateSave": true,
+        "fixedHeader": true,
+        "resonsieve":"true",
+        "bDestroy": true,
+        "iDisplayLength": 10,
+        "dom":'lBfrtip',
+        "order":[[0,"asc"]], 
+        "language": 
+        {
+            url: `${base_url}/Assets/js/config/dt_es.json`
+        },
+        "ajax":
+        {
+            "url": `${base_url}/Productos/getProductos`,
+            "dataSrc":""
+        },
+        "columns":
+        [
+            {"data":"idproducto", "width": "5%", "className": "text-center"},
+            {"data":"codigo", "width": "5%", "className": "text-center"},
+            {"data":"nombre", "width": "30%"},
+            {"data":"stock",
+            render:
+                (data) => {
+                    if (data <= 0) {
+                        return '<span class="badge badge-secondary">Sin stock</span>';
+                    }
+                    if (data <= 5) {
+                        return '<span class="badge badge-danger">' + data + '</span>';
+                    }
+                    else if (data > 5 && data < 15) {
+                        return '<span class="badge badge-warning">' + data + '</span>';
+                    }
+
+                    else {
+                        return '<span class="badge badge-success">' + data + '</span>';
+                    }
+                },
+            "width": "5%", "className": "text-center"},
+            {"data":"precio", "width": "7%", "className": "text-center"},
+            {"data":"status", "width": "5%", "className": "text-center",
+            render: 
+                (data) =>
+                {
+                    if(data == 1)
+                    {
+                        return '<span class="badge badge-success">Activo</span>';
+                    }
+                    else
+                    {
+                        return '<span class="badge badge-danger">Inactivo</span>';
+                    }
+                }
+            },
+            {"data":"options" , "width":"5%"}
+        ],
+        "buttons": [
+            {
+                "extend": "copyHtml5",
+                "text":"<i class='far fa-copy'></i> Copiar",
+                "titleAttr": "Copiar",
+                "className": "btn-sm btn-secondary",
+                "title":"tabla_productos",
+                "exportOptions":{
+                    "columns": [ 0, 1, 2, 3, 4, 5]
+                }
+            },
+            {
+                "extend": "excelHtml5",
+                "text":"<i class='far fa-file-excel'></i> Excel",
+                "titleAttr": "Exportar a Excel",
+                "className": "btn-sm btn-success",
+                "title":"tabla_productos",
+                "exportOptions":{
+                    "columns": [ 0, 1, 2, 3, 4, 5]
+                }
+            },
+            {
+                "extend": "pdfHtml5",
+                "text":"<i class='far fa-file-pdf'></i> PDF",
+                "titleAttr": "Exportar a PDF",
+                "className": "btn-sm btn-danger",
+                "messageTop":"Tabla de productos",
+                "title":"tabla_productos",
+                "exportOptions":{
+                    "columns": [ 0, 1, 2, 3, 4, 5]
+                }
+            },
+            {
+                "extend": "csvHtml5",
+                "text":"<i class='fas fa-file-csv'></i> CSV",
+                "titleAttr": "Exportar a CSV",
+                "className": "btn-sm btn-info",
+                "title":"tabla_productos",
+                "exportOptions":{
+                    "columns": [ 0, 1, 2, 3, 4, 5]
+                }
+            }
+        ]
+    });//fin datatable PORDUCTOS
+
+    if(document.querySelector("#txtCodigo")){
+        let inputCodigo = document.querySelector("#txtCodigo");
+        inputCodigo.onkeyup = () => {
+            if(inputCodigo.value.length >= 5){
+                document.querySelector('#divBarCode').classList.remove("notBlock");
+                page.BarCode();
+           }else{
+                document.querySelector('#divBarCode').classList.add("notBlock");
+           }
+        };
+    }
+    
+    tinymce.init({
+        selector: '#txtDescripcion',
+        language: 'es_419',
+        width: "100%",
+        height: 400,    
+        statubar: true,
+        plugins: [
+            "advlist autolink link image lists charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+            "save table contextmenu directionality emoticons template paste textcolor"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",
+    });
+});//fin DOMContentLoad
+
+window.addEventListener('load', () => {
+    if(document.querySelector("#formProductos")){
+        let formProductos = document.querySelector("#formProductos");
+        formProductos.onsubmit = (e) => {
+            e.preventDefault();
+            let strNombre = document.querySelector('#txtNombre').value;
+            let intCodigo = document.querySelector('#txtCodigo').value;
+            let strPrecio = document.querySelector('#txtPrecio').value;
+            let intStock = document.querySelector('#txtStock').value;
+            let intStatus = document.querySelector('#listStatus').value;
+            if(strNombre == '' || intCodigo == '' || strPrecio == '' || intStock == '' )
+            {
+                swal("Atención", "Todos los campos son obligatorios." , "error");
+                return false;
+            }
+            if(intCodigo.length < 5){
+                swal("Atención", "El código debe ser mayor que 5 dígitos." , "error");
+                return false;
+            }
+            divLoading.style.display = "flex";
+            tinyMCE.triggerSave();
+            let request = (window.XMLHttpRequest) ? 
+                            new XMLHttpRequest() : 
+                            new ActiveXObject('Microsoft.XMLHTTP');
+            let ajaxUrl = `${base_url}/Productos/setProducto`; 
+            let formData = new FormData(formProductos);
+            request.open("POST",ajaxUrl,true);
+            request.send(formData);
+            request.onreadystatechange = () =>{
+                if(request.readyState == 4 && request.status == 200){
+                    let objData = JSON.parse(request.responseText);
+                    if(objData.status)
+                    {
+                        swal("", objData.msg ,"success");
+                        document.querySelector("#idProducto").value = objData.idproducto;
+                        document.querySelector("#containerGallery").classList.remove("notBlock");
+                        $('#modalFormProductos').modal('hide');
+                        tableProductos.api().ajax.reload(null,false);
+                        htmlStatus = intStatus == 1 ? '<span class="badge badge-success">Activo</span>' : '<span class="badge badge-danger">Inactivo</span>';
+                    }else{
+                        swal("Error", objData.msg , "error");
+                    }
+                }
+                divLoading.style.display = "none";
+                return false;
+            }
+        }
+    }
+
+    if(document.querySelector(".btnAddImage")){
+       let btnAddImage =  document.querySelector(".btnAddImage");
+       btnAddImage.onclick = (e) => {
+        let key = Date.now();
+        let newElement = document.createElement("div");
+        newElement.id= "div"+key;
+        newElement.innerHTML = `
+            <div class="prevImage"></div>
+            <input type="file" name="foto" id="img${key}" class="inputUploadfile">
+            <label for="img${key}" class="btnUploadfile"><i class="fas fa-upload "></i></label>
+            <button class="btnDeleteImage notblock" type="button" onclick="fntDelItem('#div${key}')"><i class="fas fa-trash-alt"></i></button>`;
+        document.querySelector("#containerImages").appendChild(newElement);
+        document.querySelector(`#div${key} .btnUploadfile`).click();
+        page.InputFile();
+       }
+    }
+
+    page.InputFile();
+    page.Categorias();
+}, false);
 
 //declaracion de variables
 let tableProductos;
@@ -264,208 +468,3 @@ let page = {
         $('#modalFormProductos').modal('show');
     }//fin openModal
 };
-
-document.addEventListener('DOMContentLoaded', () => {
-
-    //datatable PRODUCTOS
-    tableProductos = $('#tableProductos').dataTable({
-        "scrollX":true,
-        "stateSave":true,
-        "aProcessing":true,
-        "stateSave": true,
-        "fixedHeader": true,
-        "resonsieve":"true",
-        "bDestroy": true,
-        "iDisplayLength": 10,
-        "dom":'lBfrtip',
-        "order":[[0,"asc"]], 
-        "language": 
-        {
-            url: `${base_url}/Assets/js/config/dt_es.json`
-        },
-        "ajax":
-        {
-            "url": `${base_url}/Productos/getProductos`,
-            "dataSrc":""
-        },
-        "columns":
-        [
-            {"data":"idproducto", "width": "5%", "className": "text-center"},
-            {"data":"codigo", "width": "5%", "className": "text-center"},
-            {"data":"nombre", "width": "30%"},
-            {"data":"stock",
-            render:
-                (data) => {
-                    if (data <= 0) {
-                        return '<span class="badge badge-secondary">Sin stock</span>';
-                    }
-                    if (data <= 5) {
-                        return '<span class="badge badge-danger">' + data + '</span>';
-                    }
-                    else if (data > 5 && data < 15) {
-                        return '<span class="badge badge-warning">' + data + '</span>';
-                    }
-
-                    else {
-                        return '<span class="badge badge-success">' + data + '</span>';
-                    }
-                },
-            "width": "5%", "className": "text-center"},
-            {"data":"precio", "width": "7%", "className": "text-center"},
-            {"data":"status", "width": "5%", "className": "text-center",
-            render: 
-                (data) =>
-                {
-                    if(data == 1)
-                    {
-                        return '<span class="badge badge-success">Activo</span>';
-                    }
-                    else
-                    {
-                        return '<span class="badge badge-danger">Inactivo</span>';
-                    }
-                }
-            },
-            {"data":"options" , "width":"5%"}
-        ],
-        "buttons": [
-            {
-                "extend": "copyHtml5",
-                "text":"<i class='far fa-copy'></i> Copiar",
-                "titleAttr": "Copiar",
-                "className": "btn-sm btn-secondary",
-                "title":"tabla_productos",
-                "exportOptions":{
-                    "columns": [ 0, 1, 2, 3, 4, 5]
-                }
-            },
-            {
-                "extend": "excelHtml5",
-                "text":"<i class='far fa-file-excel'></i> Excel",
-                "titleAttr": "Exportar a Excel",
-                "className": "btn-sm btn-success",
-                "title":"tabla_productos",
-                "exportOptions":{
-                    "columns": [ 0, 1, 2, 3, 4, 5]
-                }
-            },
-            {
-                "extend": "pdfHtml5",
-                "text":"<i class='far fa-file-pdf'></i> PDF",
-                "titleAttr": "Exportar a PDF",
-                "className": "btn-sm btn-danger",
-                "messageTop":"Tabla de productos",
-                "title":"tabla_productos",
-                "exportOptions":{
-                    "columns": [ 0, 1, 2, 3, 4, 5]
-                }
-            },
-            {
-                "extend": "csvHtml5",
-                "text":"<i class='fas fa-file-csv'></i> CSV",
-                "titleAttr": "Exportar a CSV",
-                "className": "btn-sm btn-info",
-                "title":"tabla_productos",
-                "exportOptions":{
-                    "columns": [ 0, 1, 2, 3, 4, 5]
-                }
-            }
-        ]
-    });//fin datatable PORDUCTOS
-
-    if(document.querySelector("#txtCodigo")){
-        let inputCodigo = document.querySelector("#txtCodigo");
-        inputCodigo.onkeyup = () => {
-            if(inputCodigo.value.length >= 5){
-                document.querySelector('#divBarCode').classList.remove("notBlock");
-                page.BarCode();
-           }else{
-                document.querySelector('#divBarCode').classList.add("notBlock");
-           }
-        };
-    }
-    
-    tinymce.init({
-        selector: '#txtDescripcion',
-        language: 'es_419',
-        width: "100%",
-        height: 400,    
-        statubar: true,
-        plugins: [
-            "advlist autolink link image lists charmap print preview hr anchor pagebreak",
-            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-            "save table contextmenu directionality emoticons template paste textcolor"
-        ],
-        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",
-    });
-});//fin DOMContentLoad
-
-window.addEventListener('load', () => {
-    if(document.querySelector("#formProductos")){
-        let formProductos = document.querySelector("#formProductos");
-        formProductos.onsubmit = (e) => {
-            e.preventDefault();
-            let strNombre = document.querySelector('#txtNombre').value;
-            let intCodigo = document.querySelector('#txtCodigo').value;
-            let strPrecio = document.querySelector('#txtPrecio').value;
-            let intStock = document.querySelector('#txtStock').value;
-            let intStatus = document.querySelector('#listStatus').value;
-            if(strNombre == '' || intCodigo == '' || strPrecio == '' || intStock == '' )
-            {
-                swal("Atención", "Todos los campos son obligatorios." , "error");
-                return false;
-            }
-            if(intCodigo.length < 5){
-                swal("Atención", "El código debe ser mayor que 5 dígitos." , "error");
-                return false;
-            }
-            divLoading.style.display = "flex";
-            tinyMCE.triggerSave();
-            let request = (window.XMLHttpRequest) ? 
-                            new XMLHttpRequest() : 
-                            new ActiveXObject('Microsoft.XMLHTTP');
-            let ajaxUrl = `${base_url}/Productos/setProducto`; 
-            let formData = new FormData(formProductos);
-            request.open("POST",ajaxUrl,true);
-            request.send(formData);
-            request.onreadystatechange = () =>{
-                if(request.readyState == 4 && request.status == 200){
-                    let objData = JSON.parse(request.responseText);
-                    if(objData.status)
-                    {
-                        swal("", objData.msg ,"success");
-                        document.querySelector("#idProducto").value = objData.idproducto;
-                        document.querySelector("#containerGallery").classList.remove("notBlock");
-                        $('#modalFormProductos').modal('hide');
-                        tableProductos.api().ajax.reload(null,false);
-                        htmlStatus = intStatus == 1 ? '<span class="badge badge-success">Activo</span>' : '<span class="badge badge-danger">Inactivo</span>';
-                    }else{
-                        swal("Error", objData.msg , "error");
-                    }
-                }
-                divLoading.style.display = "none";
-                return false;
-            }
-        }
-    }
-
-    if(document.querySelector(".btnAddImage")){
-       let btnAddImage =  document.querySelector(".btnAddImage");
-       btnAddImage.onclick = (e) => {
-        let key = Date.now();
-        let newElement = document.createElement("div");
-        newElement.id= "div"+key;
-        newElement.innerHTML = `
-            <div class="prevImage"></div>
-            <input type="file" name="foto" id="img${key}" class="inputUploadfile">
-            <label for="img${key}" class="btnUploadfile"><i class="fas fa-upload "></i></label>
-            <button class="btnDeleteImage notblock" type="button" onclick="fntDelItem('#div${key}')"><i class="fas fa-trash-alt"></i></button>`;
-        document.querySelector("#containerImages").appendChild(newElement);
-        document.querySelector(`#div${key} .btnUploadfile`).click();
-        page.InputFile();
-       }
-    }
-
-    page.InputFile();
-    page.Categorias();
-}, false);

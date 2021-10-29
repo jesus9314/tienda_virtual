@@ -104,13 +104,13 @@
 
 					if($_SESSION['permisosMod']['r'])
 					{
-						$btnView = '<button class="btn btn-info btn-sm btnViewUsuario" onClick="fntViewUsuario('.$arrData[$i]['idpersona'].')" title="Ver usuario"><i class="fa fa-eye"></i></button>';
+						$btnView = '<button class="btn btn-info btn-sm btnViewUsuario" onClick="usuario.ViewUsuario('.$arrData[$i]['idpersona'].')" title="Ver usuario"><i class="fa fa-eye"></i></button>';
 					}
 					if($_SESSION['permisosMod']['u'])
 					{
 						if(($_SESSION['idUser'] == 1 and $_SESSION['userData']['idrol'] ==1) || ($_SESSION['userData']['idrol'] == 1 and $arrData[$i]['idrol'] !=1))
 						{
-							$btnEdit = '<button class="btn btn-primary btn-sm btnEditUsuario" onClick="fntEditUsuarios(this,'.$arrData[$i]['idpersona'].')" title="Editar usuario"><i class="fa fa-pencil"></i></button>';
+							$btnEdit = '<button class="btn btn-primary btn-sm btnEditUsuario" onClick="usuario.EditUsuario(this,'.$arrData[$i]['idpersona'].')" title="Editar usuario"><i class="fa fa-pencil"></i></button>';
 						}
 						else
 						{
@@ -123,7 +123,7 @@
 						if(($_SESSION['idUser'] == 1 and $_SESSION['userData']['idrol'] ==1) || ($_SESSION['userData']['idrol'] == 1 and $arrData[$i]['idrol'] !=1) and 
 							($_SESSION['userData']['idpersona'] != $arrData[$i]['idpersona']))
 						{
-						$btnDelete = '<button class="btn btn-danger btn-sm btnDelCliente" onClick="fntDelUsuario('.$arrData[$i]['idpersona'].')" title="Eliminar usuario"><i class="fa fa-trash"></i></button>';	
+						$btnDelete = '<button class="btn btn-danger btn-sm btnDelCliente" onClick="usuario.DelUsuario('.$arrData[$i]['idpersona'].')" title="Eliminar usuario"><i class="fa fa-trash"></i></button>';	
 						}
 						else
 						{

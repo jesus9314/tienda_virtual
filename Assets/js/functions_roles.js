@@ -163,23 +163,23 @@ let rol ={
             }
         });       
     },//fin DelRol
-    Permisos: (idpersona) => {
-        var idrol = idpersona;
-        var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
-        var ajaxUrl = base_url+'/Permisos/getPermisosRol/'+idrol;
-        request.open("GET", ajaxUrl, true);
-        request.send();
-        request.onreadystatechange = function()
-        {
-            if(request.readyState == 4 && request.status == 200)
-            {
-                document.querySelector('#contentAjax').innerHTML = request.responseText;
-                $('.modalPermisos').modal('show');
-                document.querySelector('#formPermisos').addEventListener('submit', fntSavePermisos,false);
-            }
+}
+function Permisos(idpersona){
+    var idrol = idpersona;
+    var request = (window.XMLHttpRequest) ? new XMLHttpRequest : new ActiveXObject('Microsoft.XMLHTTP');
+    var ajaxUrl = `${base_url}/Permisos/getPermisosRol/${idrol}`;
+    request.open("GET", ajaxUrl, true);
+    request.send();
+    request.onreadystatechange = () => {
+        if (request.readyState == 4 && request.status == 200) {
+            document.querySelector('#contentAjax').innerHTML = request.responseText;
+            $('.modalPermisos').modal('show');
+            document.querySelector('#formPermisos').addEventListener('submit', SavePermisos, false);
         }
-    },//fin Permisos
-    SavePermisos: (evnet) => {
+    }
+}
+
+function SavePermisos(evnet){
         evnet.preventDefault();
         var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
         var ajaxUrl = `${base_url}/Permisos/setPermisos`;
@@ -199,9 +199,7 @@ let rol ={
                 }
             }
         }
-    }
 }
-
 function openModal()
 {
     document.querySelector('#idRol').value = "";

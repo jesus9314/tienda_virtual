@@ -13,16 +13,12 @@
     <link rel="shortcut icon" href="<?= media(); ?>images/favicon.ico">
 
     <!-- Bootstrap -->
-    <link href="<?= media(); ?>gentella/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?= media();?>/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link href="<?= media(); ?>gentella/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="<?= media(); ?>gentella/vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- Animate.css -->
-    <link href="<?= media(); ?>gentella/vendors/animate.css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?= media();?>/fonts/font-awesome.min.css">
 
     <!-- Custom Theme Style -->
-    <link href="<?= media(); ?>gentella/build/css/custom.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo media();?>/css/main.css">
   </head>
 
   <body class="login">
@@ -106,9 +102,11 @@
       const base_url = "<?= base_url();?>";
     </script>
     <!-- Essential javascripts for application to work-->
-    <script src="<?= media(); ?>js/jquery-3.3.1.min.js"></script>
     <script src="<?= media(); ?>js/popper.min.js"></script>
-    <script src="<?= media(); ?>js/bootstrap.min.js"></script>
+    <!-- jQuery -->
+    <script src="<?= media(); ?>js/plugins/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="<?= media(); ?>js/plugins/bootstrap.bundle.min.js"></script>
     <script src="<?= media(); ?>js/fontawsome.js"></script>
     <script src="<?= media(); ?>js/main.js"></script>
     <!-- The javascript plugin to display page loading on top-->

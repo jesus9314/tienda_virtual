@@ -1,4 +1,81 @@
 'use strict'
+//funciones al cargar el DOM
+document.addEventListener('DOMContentLoaded', () => {
+	tableClientes = $('#tableClientes').dataTable({
+        "scrollX":true,
+        "stateSave":true,
+        "aProcessing":true,
+        "stateSave": true,
+        "fixedHeader": true,
+        "resonsieve":"true",
+        "bDestroy": true,
+        "iDisplayLength": 10,
+        "dom":'lBfrtip',
+        "order":[[0,"asc"]], 
+        "language": 
+        {
+            url: `${base_url}/Assets/js/config/dt_es.json`
+        },
+        "ajax":
+        {
+            "url":`${base_url}/Clientes/getClientes`,
+            "dataSrc":""
+        },
+        "columns":
+        [
+            {"data":"idpersona", "width": "5%", "className": "text-center"},
+            {"data":"identificacion", "width": "10%", "className": "text-center"},
+            {"data":"nombres", "width": "10%", "className": "text-center"},
+            {"data":"apellidos", "width": "10%", "className": "text-center"},
+            {"data":"email_user", "width": "10%", "className": "text-center"},
+            {"data":"telefono", "width": "10%", "className": "text-center"},
+            {"data":"options" , "width":"5%"}
+        ],
+        "buttons": [
+            {
+            	"extend": "copyHtml5",
+            	"text":"<i class='far fa-copy'></i> Copiar",
+            	"titleAttr": "Copiar",
+            	"className": "btn-sm btn-secondary",
+            	"title":"tabla_clientes",
+            	"exportOptions":{
+            		"columns": [ 0, 1, 2, 3]
+            	}
+            },
+            {
+            	"extend": "excelHtml5",
+            	"text":"<i class='far fa-file-excel'></i> Excel",
+            	"titleAttr": "Exportar a Excel",
+            	"className": "btn-sm btn-success",
+            	"title":"tabla_clientes",
+            	"exportOptions":{
+            		"columns": [ 0, 1, 2, 3]
+            	}
+            },
+            {
+            	"extend": "pdfHtml5",
+            	"text":"<i class='far fa-file-pdf'></i> PDF",
+            	"titleAttr": "Exportar a PDF",
+            	"className": "btn-sm btn-danger",
+            	"messageTop":"Tabla de Clientes",
+            	"title":"tabla_clientes",
+            	"exportOptions":{
+            		"columns": [ 0, 1, 2, 3]
+            	}
+            },
+            {
+            	"extend": "csvHtml5",
+            	"text":"<i class='fas fa-file-csv'></i> CSV",
+            	"titleAttr": "Exportar a CSV",
+            	"className": "btn-sm btn-info",
+            	"title":"tabla_clientes",
+            	"exportOptions":{
+            		"columns": [ 0, 1, 2, 3]
+            	}
+            }
+        ]
+	});//fin Datatable Clientes
+});//fin DOM
 
 //declaracion de variables
 let divLoading = document.querySelector("#divLoading"); //loading
@@ -121,81 +198,5 @@ function openModal()
 }//fin openModal
 //
 //
-//funciones al cargar el DOM
-document.addEventListener('DOMContentLoaded', () => {
-	tableClientes = $('#tableClientes').dataTable({
-        "scrollX":true,
-        "stateSave":true,
-        "aProcessing":true,
-        "stateSave": true,
-        "fixedHeader": true,
-        "resonsieve":"true",
-        "bDestroy": true,
-        "iDisplayLength": 10,
-        "dom":'lBfrtip',
-        "order":[[0,"asc"]], 
-        "language": 
-        {
-            url: `${base_url}/Assets/js/config/dt_es.json`
-        },
-        "ajax":
-        {
-            "url":`${base_url}/Clientes/getClientes`,
-            "dataSrc":""
-        },
-        "columns":
-        [
-            {"data":"idpersona", "width": "5%", "className": "text-center"},
-            {"data":"identificacion", "width": "10%", "className": "text-center"},
-            {"data":"nombres", "width": "10%", "className": "text-center"},
-            {"data":"apellidos", "width": "10%", "className": "text-center"},
-            {"data":"email_user", "width": "10%", "className": "text-center"},
-            {"data":"telefono", "width": "10%", "className": "text-center"},
-            {"data":"options" , "width":"5%"}
-        ],
-        "buttons": [
-            {
-            	"extend": "copyHtml5",
-            	"text":"<i class='far fa-copy'></i> Copiar",
-            	"titleAttr": "Copiar",
-            	"className": "btn-sm btn-secondary",
-            	"title":"tabla_clientes",
-            	"exportOptions":{
-            		"columns": [ 0, 1, 2, 3]
-            	}
-            },
-            {
-            	"extend": "excelHtml5",
-            	"text":"<i class='far fa-file-excel'></i> Excel",
-            	"titleAttr": "Exportar a Excel",
-            	"className": "btn-sm btn-success",
-            	"title":"tabla_clientes",
-            	"exportOptions":{
-            		"columns": [ 0, 1, 2, 3]
-            	}
-            },
-            {
-            	"extend": "pdfHtml5",
-            	"text":"<i class='far fa-file-pdf'></i> PDF",
-            	"titleAttr": "Exportar a PDF",
-            	"className": "btn-sm btn-danger",
-            	"messageTop":"Tabla de Clientes",
-            	"title":"tabla_clientes",
-            	"exportOptions":{
-            		"columns": [ 0, 1, 2, 3]
-            	}
-            },
-            {
-            	"extend": "csvHtml5",
-            	"text":"<i class='fas fa-file-csv'></i> CSV",
-            	"titleAttr": "Exportar a CSV",
-            	"className": "btn-sm btn-info",
-            	"title":"tabla_clientes",
-            	"exportOptions":{
-            		"columns": [ 0, 1, 2, 3]
-            	}
-            }
-        ]
-	});//fin Datatable Clientes
-});//fin DOM
+
 

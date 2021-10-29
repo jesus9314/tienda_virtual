@@ -13,26 +13,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="<?= media();?>/images/favicon.ico">
     <title><?= $data['page_tag'];?></title>
-
     <!-- Bootstrap -->
-    <link href="<?= media(); ?>gentella/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?= media();?>/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?= media();?>/css/bootstrap-select.min.css">
     <!-- Font Awesome -->
-    <link href="<?= media(); ?>gentella/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="<?= media(); ?>gentella/vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="<?= media(); ?>gentella/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?= media();?>/fonts/font-awesome.min.css">
     <!-- Datatables -->
-    <link href="<?= media(); ?>gentella/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="<?= media(); ?>gentella/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="<?= media(); ?>gentella/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="<?= media(); ?>gentella/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="<?= media(); ?>gentella/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?= media();?>/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= media();?>/css/buttons.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= media();?>/css/fixedHeader.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= media();?>/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= media();?>/css/scroller.bootstrap.min.css">
     <!-- Custom Theme Style -->
     <link rel="stylesheet" type="text/css" href="<?php echo media();?>/css/main.css">
-    <link href="<?= media(); ?>gentella/build/css/custom.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?= media();?>/css/style.css">
+    <script>
+        const base_url = "<?= base_url(); ?>";
+    </script>
+    <script src="<?= media(); ?>js/fontawsome.js"></script>
+    <!-- jQuery -->
+    <script src="<?= media(); ?>js/plugins/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="<?= media(); ?>js/plugins/bootstrap.bundle.min.js"></script>
+    <!-- Data table plugin-->
+    <script type="text/javascript" src="<?= media(); ?>js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="<?= media(); ?>js/plugins/dataTables.bootstrap.min.js"></script>
+        <!-- Page specific javascripts-->
+    <script type="text/javascript" src="<?= media(); ?>js/plugins/sweetalert.min.js"></script>
+    <script type="text/javascript" src="<?= media(); ?>/js/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript" src="<?= media(); ?>/js/tinymce/langs/es_419.js"></script>
+    <!-- Bootstrap-select-->
+    <script type="text/javascript" src="<?= media(); ?>js/plugins/bootstrap-select.min.js"></script>
+    <!-- ExportDatatables-->
+    <script type="text/javascript" src="<?= media(); ?>js/plugins/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="<?= media(); ?>js/plugins/jszip.min.js"></script>
+    <script type="text/javascript" src="<?= media(); ?>js/plugins/pdfmake.min.js"></script>
+    <script type="text/javascript" src="<?= media(); ?>js/plugins/vfs_fonts.js"></script>
+    <script type="text/javascript" src="<?= media(); ?>js/plugins/buttons.html5.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="<?= media(); ?>js/functions_admin.js"></script>
+    <script src="<?= media(); ?>js/<?= $data['page_functions_js']; ?>"></script>
   </head>
   <body class="nav-md">
 
