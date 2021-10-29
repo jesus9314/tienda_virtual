@@ -10,7 +10,7 @@
                   <div class="x_title">
                     <h1><?= $data['page_tittle'];?>
                     <?php if($_SESSION['permisosMod']['w']){ ?>
-                      <span class="float-right"><button class="btn btn-sm btn-dark" title="Agregar nuevo producto" type="button" onclick="openModal();" ><i class="fas fa-plus-circle"></i> Nuevo Producto</button></span>
+                      <span class="float-right"><button class="btn btn-sm btn-dark" title="Agregar nuevo producto" type="button" onclick="page.openModal();" ><i class="fas fa-plus-circle"></i> Nuevo Producto</button></span>
                     <?php } ?> 
                   </h1> 
                   </div>

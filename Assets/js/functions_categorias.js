@@ -6,10 +6,11 @@ let tableCategorias;
 //
 //
 //objeto CATEGORIAS
-var categorias = {
+let categorias = 
+{
   ViewInfo: (idcategoria) => {
     let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-    let ajaxUrl = base_url+'/Categorias/getCategoria/'+idcategoria;
+    let ajaxUrl = `${base_url}/Categorias/getCategoria/${idcategoria}`;
     request.open("GET",ajaxUrl,true);
     request.send();
     request.onreadystatechange = function(){
@@ -24,7 +25,7 @@ var categorias = {
                 document.querySelector("#celNombre").innerHTML = objData.data.nombre;
                 document.querySelector("#celDescripcion").innerHTML = objData.data.descripcion;
                 document.querySelector("#celEstado").innerHTML = estado;
-                document.querySelector("#imgCategoria").innerHTML = '<img src="'+objData.data.url_portada+'" height="100px" class="img-thumbnail"></img>';
+                document.querySelector("#imgCategoria").innerHTML = `<img src="${objData.data.url_portada}" height="100px" class="img-thumbnail"></img>`;
                 $('#modalViewCategoria').modal('show');
             }else{
                 swal("Error", objData.msg , "error");
@@ -32,49 +33,48 @@ var categorias = {
         }
     }
   },  
-  EditInfo: (element,idcategoria) => {
+  EditInfo: (idcategoria) => {
     document.querySelector('#titleModal').innerHTML ="Actualizar Categoría";
     document.querySelector('.modal-header').classList.replace("headerRegister", "headerUpdate");
     document.querySelector('#btnActionForm').classList.replace("btn-primary", "btn-info");
     document.querySelector('#btnText').innerHTML ="Actualizar";
     let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-    let ajaxUrl = base_url+'/Categorias/getCategoria/'+idcategoria;
+    let ajaxUrl = `${base_url}/Categorias/getCategoria/${idcategoria}`;
     request.open("GET",ajaxUrl,true);
     request.send();
-    request.onreadystatechange = function(){
-        if(request.readyState == 4 && request.status == 200){
+    request.onreadystatechange = () => {
+        if (request.readyState == 4 && request.status == 200) {
             let objData = JSON.parse(request.responseText);
-            if(objData.status)
-            {
+            if (objData.status) {
                 document.querySelector("#idCategoria").value = objData.data.idcategoria;
                 document.querySelector("#txtNombre").value = objData.data.nombre;
                 document.querySelector("#txtDescripcion").value = objData.data.descripcion;
                 document.querySelector('#foto_actual').value = objData.data.portada;
-                document.querySelector("#foto_remove").value= 0;
+                document.querySelector("#foto_remove").value = 0;
 
-                if(objData.data.status == 1){
+                if (objData.data.status == 1) {
                     document.querySelector("#listStatus").value = 1;
-                }else{
+                } else {
                     document.querySelector("#listStatus").value = 2;
                 }
                 $('#listStatus').selectpicker('render');
 
-                if(document.querySelector('#img')){
+                if (document.querySelector('#img')) {
                     document.querySelector('#img').src = objData.data.url_portada;
-                }else{
-                    document.querySelector('.prevPhoto div').innerHTML = "<img id='img' src="+objData.data.url_portada+" height='20px' class='img-thumbnail'>";
+                } else {
+                    document.querySelector('.prevPhoto div').innerHTML = "<img id='img' src=" + objData.data.url_portada + " height='20px' class='img-thumbnail'>";
                 }
 
-                if(objData.data.portada == 'portada_categoria.png'){
+                if (objData.data.portada == 'portada_categoria.png') {
                     document.querySelector('.delPhoto').classList.add("notBlock");
-                }else{
+                } else {
                     document.querySelector('.delPhoto').classList.remove("notBlock");
                 }
 
                 $('#modalFormCategorias').modal('show');
 
-            }else{
-                swal("Error", objData.msg , "error");
+            } else {
+                swal("Error", objData.msg, "error");
             }
         }
     }
@@ -93,7 +93,7 @@ var categorias = {
         if (isConfirm) 
         {
             let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-            let ajaxUrl = base_url+'/Categorias/delCategoria';
+            let ajaxUrl = `${base_url}/Categorias/delCategoria`;
             let strData = "idCategoria="+idcategoria;
             request.open("POST",ajaxUrl,true);
             request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -118,7 +118,8 @@ var categorias = {
 //
 //
 //objeto PAGE
-var page = {
+let page = 
+{
   openModal: () => {
     document.querySelector('#idCategoria').value="";
     document.querySelector('.modal-header').classList.replace("headerUpdate", "headerRegister");
@@ -154,11 +155,11 @@ document.addEventListener('DOMContentLoaded', () => {
         "order":[[0,"asc"]], 
         "language": 
         {
-            url: " "+base_url+"/Assets/js/config/dt_es.json"
+            url: `${base_url}/Assets/js/config/dt_es.json`
         },
         "ajax":
         {
-            "url": " "+base_url+"/Categorias/getCategorias",
+            "url": `${base_url}/Categorias/getCategorias`,
             "dataSrc":""
         },
         "columns":
@@ -231,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if(document.querySelector("#foto"))
 	{
     let foto = document.querySelector("#foto");
-	    foto.onchange = function(e) 
+	    foto.onchange = (e) =>
 	    {
 	        let uploadFoto = document.querySelector("#foto").value;
 	        let fileimg = document.querySelector("#foto").files;
@@ -260,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	                    }
 	                    document.querySelector('.delPhoto').classList.remove("notBlock");
 	                    let objeto_url = nav.createObjectURL(this.files[0]);
-	                    document.querySelector('.prevPhoto div').innerHTML = "<img id='img' src="+objeto_url+">";
+	                    document.querySelector('.prevPhoto div').innerHTML = `<img id='img' src=${objeto_url}>`;
 	            }
 	        }else{
 	            alert("No selecciono foto");
@@ -298,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         divLoading.style.display ="flex"
         let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-        let ajaxUrl = base_url+'/Categorias/setCategoria'; 
+        let ajaxUrl = `${base_url}/Categorias/setCategoria`; 
         let formData = new FormData(formCategoria);
         request.open("POST",ajaxUrl,true);
         request.send(formData);
