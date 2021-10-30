@@ -170,7 +170,6 @@ window.addEventListener('load', () => {
                         swal("", objData.msg ,"success");
                         document.querySelector("#idProducto").value = objData.idproducto;
                         document.querySelector("#containerGallery").classList.remove("notBlock");
-                        $('#modalFormProductos').modal('hide');
                         tableProductos.api().ajax.reload(null,false);
                         htmlStatus = intStatus == 1 ? '<span class="badge badge-success">Activo</span>' : '<span class="badge badge-danger">Inactivo</span>';
                     }else{
@@ -193,13 +192,12 @@ window.addEventListener('load', () => {
             <div class="prevImage"></div>
             <input type="file" name="foto" id="img${key}" class="inputUploadfile">
             <label for="img${key}" class="btnUploadfile"><i class="fas fa-upload "></i></label>
-            <button class="btnDeleteImage notblock" type="button" onclick="fntDelItem('#div${key}')"><i class="fas fa-trash-alt"></i></button>`;
+            <button class="btnDeleteImage notblock" type="button" onclick="page.DelItem('#div${key}')"><i class="fas fa-trash-alt"></i></button>`;
         document.querySelector("#containerImages").appendChild(newElement);
         document.querySelector(`#div${key} .btnUploadfile`).click();
         page.InputFile();
        }
     }
-
     page.InputFile();
     page.Categorias();
 }, false);
@@ -298,7 +296,7 @@ let producto = {
                                 <div class="prevImage">
                                 <img src="${objProductos[p].url_image}"></img>
                                 </div>
-                                <button type="button" class="btnDeleteImage" onclick="fntDelItem('#div${key}')" imgname="${objProductos[p].img}">
+                                <button type="button" class="btnDeleteImage" onclick="page.DelItem('#div${key}')" imgname="${objProductos[p].img}">
                                 <i class="fas fa-trash"></i></button></div>`;
                         }
                     }
@@ -332,15 +330,14 @@ let producto = {
                 request.open("POST",ajaxUrl,true);
                 request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 request.send(strData);
-                request.onreadystatechange = function(){
-                    if(request.readyState == 4 && request.status == 200){
+                request.onreadystatechange = () => {
+                    if (request.readyState == 4 && request.status == 200) {
                         let objData = JSON.parse(request.responseText);
-                        if(objData.status)
-                        {
-                            swal("Eliminar!", objData.msg , "success");
+                        if (objData.status) {
+                            swal("Eliminar!", objData.msg, "success");
                             tableProductos.api().ajax.reload();
-                        }else{
-                            swal("Atención!", objData.msg , "error");
+                        } else {
+                            swal("Atención!", objData.msg, "error");
                         }
                     }
                 }
@@ -354,14 +351,15 @@ let producto = {
 let page = {
     InputFile: () => {
         let inputUploadfile = document.querySelectorAll(".inputUploadfile");
-        inputUploadfile.forEach(function(inputUploadfile) {
+        inputUploadfile.forEach((inputUploadfile) => {
             inputUploadfile.addEventListener('change', () => {
                 let idProducto = document.querySelector("#idProducto").value;
+                console.log(idProducto);
                 let parentId = this.parentNode.getAttribute("id");
-                let idFile = this.getAttribute("id");            
-                let uploadFoto = document.querySelector("#"+idFile).value;
-                let fileimg = document.querySelector("#"+idFile).files;
-                let prevImg = document.querySelector("#"+parentId+" .prevImage");
+                let idFile = this.getAttribute("id");       
+                let uploadFoto = document.querySelector(`#${idFile}`).value;
+                let fileimg = document.querySelector(`#${idFile}`).files;
+                let prevImg = document.querySelector(`#${parentId} .prevImage`);
                 let nav = window.URL || window.webkitURL;
                 if(uploadFoto !=''){
                     let type = fileimg[0].type;
@@ -404,25 +402,32 @@ let page = {
     },//fin InputFile
     DelItem :(element) => {
         let nameImg = document.querySelector(element+' .btnDeleteImage').getAttribute("imgname");
-        let idProducto = document.querySelector("#idProducto").value;
-        let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-        let ajaxUrl = `${base_url}/Productos/delFile`; 
-
-        let formData = new FormData();
-        formData.append('idproducto',idProducto);
-        formData.append("file",nameImg);
-        request.open("POST",ajaxUrl,true);
-        request.send(formData);
-        request.onreadystatechange = function(){
-            if(request.readyState != 4) return;
-            if(request.status == 200){
-                let objData = JSON.parse(request.responseText);
-                if(objData.status)
-                {
-                    let itemRemove = document.querySelector(element);
-                    itemRemove.parentNode.removeChild(itemRemove);
-                }else{
-                    swal("", objData.msg , "error");
+        if (nameImg == null)
+        { 
+            let itemRemove = document.querySelector(element);
+            itemRemove.parentNode.removeChild(itemRemove);
+        }
+        else
+        {
+            let idProducto = document.querySelector("#idProducto").value;
+            let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+            let ajaxUrl = `${base_url}/Productos/delFile`; 
+            let formData = new FormData();
+            formData.append('idproducto',idProducto);
+            formData.append("file",nameImg);
+            request.open("POST",ajaxUrl,true);
+            request.send(formData);
+            request.onreadystatechange = () => {
+                if (request.readyState != 4)
+                    return;
+                if (request.status == 200) {
+                    let objData = JSON.parse(request.responseText);
+                    if (objData.status) {
+                        let itemRemove = document.querySelector(element);
+                        itemRemove.parentNode.removeChild(itemRemove);
+                    } else {
+                        swal("", objData.msg, "error");
+                    }
                 }
             }
         }
