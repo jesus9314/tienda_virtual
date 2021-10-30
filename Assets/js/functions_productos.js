@@ -1,4 +1,15 @@
 'use strict'
+
+//declaracion de variables
+let tableProductos;
+//agregamos el archivo
+document.write(`<script src="${base_url}/Assets/js/plugins/JsBarcode.all.min.js"></script>`);
+//
+$(document).on('focusin', (e) => {
+    if ($(e.target).closest(".tox-dialog").length) {
+        e.stopImmediatePropagation();
+    }
+});
 document.addEventListener('DOMContentLoaded', () => {
 
     //datatable PRODUCTOS
@@ -155,9 +166,7 @@ window.addEventListener('load', () => {
             }
             divLoading.style.display = "flex";
             tinyMCE.triggerSave();
-            let request = (window.XMLHttpRequest) ? 
-                            new XMLHttpRequest() : 
-                            new ActiveXObject('Microsoft.XMLHTTP');
+            let request = (window.XMLHttpRequest) ? new XMLHttpRequest() :  new ActiveXObject('Microsoft.XMLHTTP');
             let ajaxUrl = `${base_url}/Productos/setProducto`; 
             let formData = new FormData(formProductos);
             request.open("POST",ajaxUrl,true);
@@ -195,23 +204,13 @@ window.addEventListener('load', () => {
             <button class="btnDeleteImage notblock" type="button" onclick="page.DelItem('#div${key}')"><i class="fas fa-trash-alt"></i></button>`;
         document.querySelector("#containerImages").appendChild(newElement);
         document.querySelector(`#div${key} .btnUploadfile`).click();
-        page.InputFile();
+        page.fntInputFile();
        }
     }
-    page.InputFile();
+    page.fntInputFile();
     page.Categorias();
 }, false);
 
-//declaracion de variables
-let tableProductos;
-//agregamos el archivo
-document.write(`<script src="${base_url}/Assets/js/plugins/JsBarcode.all.min.js"></script>`);
-//
-$(document).on('focusin', (e) => {
-    if ($(e.target).closest(".tox-dialog").length) {
-        e.stopImmediatePropagation();
-    }
-});
 //objeto PRODUCTOS
 let producto = {
     ViewProduct: (idProducto) => {
@@ -349,17 +348,16 @@ let producto = {
 
 //objeto Page
 let page = {
-    InputFile: () => {
+    fntInputFile: function(){
         let inputUploadfile = document.querySelectorAll(".inputUploadfile");
-        inputUploadfile.forEach((inputUploadfile) => {
-            inputUploadfile.addEventListener('change', () => {
+        inputUploadfile.forEach(function(inputUploadfile) {
+            inputUploadfile.addEventListener('change', function(){
                 let idProducto = document.querySelector("#idProducto").value;
-                console.log(idProducto);
                 let parentId = this.parentNode.getAttribute("id");
-                let idFile = this.getAttribute("id");       
-                let uploadFoto = document.querySelector(`#${idFile}`).value;
-                let fileimg = document.querySelector(`#${idFile}`).files;
-                let prevImg = document.querySelector(`#${parentId} .prevImage`);
+                let idFile = this.getAttribute("id");            
+                let uploadFoto = document.querySelector("#"+idFile).value;
+                let fileimg = document.querySelector("#"+idFile).files;
+                let prevImg = document.querySelector("#"+parentId+" .prevImage");
                 let nav = window.URL || window.webkitURL;
                 if(uploadFoto !=''){
                     let type = fileimg[0].type;
@@ -371,9 +369,9 @@ let page = {
                     }else{
                         let objeto_url = nav.createObjectURL(this.files[0]);
                         prevImg.innerHTML = `<img class="loading" src="${base_url}/Assets/images/loading.svg" >`;
-
+    
                         let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-                        let ajaxUrl = `${base_url}/Productos/setImage`; 
+                        let ajaxUrl = base_url+'/Productos/setImage'; 
                         let formData = new FormData();
                         formData.append('idproducto',idProducto);
                         formData.append("foto", this.files[0]);
@@ -393,13 +391,13 @@ let page = {
                                 }
                             }
                         }
-
+    
                     }
                 }
-
+    
             });
         });
-    },//fin InputFile
+    },
     DelItem :(element) => {
         let nameImg = document.querySelector(element+' .btnDeleteImage').getAttribute("imgname");
         if (nameImg == null)
@@ -473,3 +471,54 @@ let page = {
         $('#modalFormProductos').modal('show');
     }//fin openModal
 };
+
+/*function fntInputFile(){
+    let inputUploadfile = document.querySelectorAll(".inputUploadfile");
+    inputUploadfile.forEach(function(inputUploadfile) {
+        inputUploadfile.addEventListener('change', function(){
+            let idProducto = document.querySelector("#idProducto").value;
+            let parentId = this.parentNode.getAttribute("id");
+            let idFile = this.getAttribute("id");            
+            let uploadFoto = document.querySelector("#"+idFile).value;
+            let fileimg = document.querySelector("#"+idFile).files;
+            let prevImg = document.querySelector("#"+parentId+" .prevImage");
+            let nav = window.URL || window.webkitURL;
+            if(uploadFoto !=''){
+                let type = fileimg[0].type;
+                let name = fileimg[0].name;
+                if(type != 'image/jpeg' && type != 'image/jpg' && type != 'image/png'){
+                    prevImg.innerHTML = "Archivo no válido";
+                    uploadFoto.value = "";
+                    return false;
+                }else{
+                    let objeto_url = nav.createObjectURL(this.files[0]);
+                    prevImg.innerHTML = `<img class="loading" src="${base_url}/Assets/images/loading.svg" >`;
+
+                    let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+                    let ajaxUrl = base_url+'/Productos/setImage'; 
+                    let formData = new FormData();
+                    formData.append('idproducto',idProducto);
+                    formData.append("foto", this.files[0]);
+                    request.open("POST",ajaxUrl,true);
+                    request.send(formData);
+                    request.onreadystatechange = function(){
+                        if(request.readyState != 4) return;
+                        if(request.status == 200){
+                            let objData = JSON.parse(request.responseText);
+                            if(objData.status){
+                                prevImg.innerHTML = `<img src="${objeto_url}">`;
+                                document.querySelector("#"+parentId+" .btnDeleteImage").setAttribute("imgname",objData.imgname);
+                                document.querySelector("#"+parentId+" .btnUploadfile").classList.add("notblock");
+                                document.querySelector("#"+parentId+" .btnDeleteImage").classList.remove("notblock");
+                            }else{
+                                swal("Error", objData.msg , "error");
+                            }
+                        }
+                    }
+
+                }
+            }
+
+        });
+    });
+}*/

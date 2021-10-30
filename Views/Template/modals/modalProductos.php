@@ -9,12 +9,10 @@
         </button>
       </div>
       <div class="modal-body">
-        
             <form id="formProductos" name="formProductos" class="form-horizontal">
               <div class="tile">
               <input type="hidden" id="idProducto" name="idProducto" value="">
               <p class="text-primary">Los campos con asterisco (<span class="required">*</span>) son obligatorios.</p>
-              <hr>
               <div class="row">
                 <div class="col-md-8">
                     <div class="form-group">
@@ -25,7 +23,6 @@
                       <label class="control-label">Descripción Producto</label>
                       <textarea class="form-control" id="txtDescripcion" name="txtDescripcion" ></textarea>
                     </div>
-                    
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
@@ -49,7 +46,6 @@
                             <input class="form-control" id="txtStock" name="txtStock" type="text" required="" placeholder="0">
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="listCategoria">Categoría <span class="required">*</span></label>
@@ -63,11 +59,8 @@
                             </select>
                         </div>
                     </div>
-
- 
                 </div>
               </div>
-              
               <div class="tile-footer">
                  <div class="form-group col-md-12">
                      <div id="containerGallery">
