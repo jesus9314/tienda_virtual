@@ -26,7 +26,7 @@
                         <li><i class="fa fa-user user-profile-icon"></i> <?= $_SESSION['userData']['nombrerol'] ?>
                         </li>
                       </ul>
-                      <button class="btn btn-success" type="submit" onclick="page.openModalPerfil()"><i class="fa fa-edit m-right-xs"></i>Editar Perfil</button>
+                      <button class="btn btn-success" type="submit" onclick="openModalPerfil()"><i class="fa fa-edit m-right-xs"></i>Editar Perfil</button>
                       <br />
                     </div>
 
