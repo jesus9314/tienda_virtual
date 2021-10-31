@@ -90,48 +90,41 @@ document.addEventListener('DOMContentLoaded', () => {
   }, false)//fin DATATABLE
     
     //Upload FOTO
-    if(document.querySelector("#foto"))
-      {
-      let foto = document.querySelector("#foto");
-          foto.onchange = (e) =>
-          {
-              let uploadFoto = document.querySelector("#foto").value;
-              let fileimg = document.querySelector("#foto").files;
-              let nav = window.URL || window.webkitURL;
-              let contactAlert = document.querySelector('#form_alert');
-              if(uploadFoto !='')
-              {
-                  let type = fileimg[0].type;
-                  let name = fileimg[0].name;
-                  if(type != 'image/jpeg' && type != 'image/jpg' && type != 'image/png')
-                  {
-                      contactAlert.innerHTML = '<p class="errorArchivo">El archivo no es válido.</p>';
-                      if(document.querySelector('#img')){
-                          document.querySelector('#img').remove();
-                      }
-                      document.querySelector('.delPhoto').classList.add("notBlock");
-                      foto.value="";
-                      return false;
-                  }
-                  else
-                  {  
-                          contactAlert.innerHTML='';
-                          if(document.querySelector('#img'))
-                          {
-                              document.querySelector('#img').remove();
-                          }
-                          document.querySelector('.delPhoto').classList.remove("notBlock");
-                          let objeto_url = nav.createObjectURL(this.files[0]);
-                          document.querySelector('.prevPhoto div').innerHTML = `<img id='img' src=${objeto_url}>`;
-                  }
-              }else{
-                  alert("No selecciono foto");
-                  if(document.querySelector('#img')){
-                      document.querySelector('#img').remove();
-                  }
-              }
-          }
-      }
+    if(document.querySelector("#foto")){
+	    let foto = document.querySelector("#foto");
+	    foto.onchange = function(e) {
+	        let uploadFoto = document.querySelector("#foto").value;
+	        let fileimg = document.querySelector("#foto").files;
+	        let nav = window.URL || window.webkitURL;
+	        let contactAlert = document.querySelector('#form_alert');
+	        if(uploadFoto !=''){
+	            let type = fileimg[0].type;
+	            let name = fileimg[0].name;
+	            if(type != 'image/jpeg' && type != 'image/jpg' && type != 'image/png'){
+	                contactAlert.innerHTML = '<p class="errorArchivo">El archivo no es válido.</p>';
+	                if(document.querySelector('#img')){
+	                    document.querySelector('#img').remove();
+	                }
+	                document.querySelector('.delPhoto').classList.add("notBlock");
+	                foto.value="";
+	                return false;
+	            }else{  
+	                    contactAlert.innerHTML='';
+	                    if(document.querySelector('#img')){
+	                        document.querySelector('#img').remove();
+	                    }
+	                    document.querySelector('.delPhoto').classList.remove("notBlock");
+	                    let objeto_url = nav.createObjectURL(this.files[0]);
+	                    document.querySelector('.prevPhoto div').innerHTML = "<img id='img' src="+objeto_url+">";
+	                }
+	        }else{
+	            alert("No selecciono foto");
+	            if(document.querySelector('#img')){
+	                document.querySelector('#img').remove();
+	            }
+	        }
+	    }
+	}
     //fin upload FOTO
     //
     //
@@ -158,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
               swal("Atención", "Todos los campos son obligatorios." , "error");
               return false;
           }
-          divLoading.style.display ="flex"
+          //divLoading.style.display ="flex"
           let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
           let ajaxUrl = `${base_url}/Categorias/setCategoria`; 
           let formData = new FormData(formCategoria);
@@ -178,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
                       swal("Error", objData.msg , "error");
                   }              
               }
-              divLoading.style.display = "none";
+              //divLoading.style.display = "none";
               return false; 
           } 
       }
