@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade" id="modalFormProductos" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
-  <div class="modal-dialog modal-xl" >
+  <div class="modal-dialog modal-xl modal-dialog-scrollable" >
     <div class="modal-content">
       <div class="modal-header headerRegister">
         <h5 class="modal-title" id="titleModal">Nueva Producto</h5>

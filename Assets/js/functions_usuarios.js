@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
 						return false;
 					}
 				}
-				divLoading.style.display = "flex";
+				//divLoading.style.display = "flex";
 				let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
 				let ajaxUrl = `${base_url}/Usuarios/setUsuario`;
 				let formData = new FormData(formUsuario);
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
 							swal("Error", objData.msg, "error");
 						}
 					}
-					divLoading.style.display = "none";
+					//divLoading.style.display = "none";
 					return false;
 				};
 			}
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
 						return false;
 					}
 				}
-				divLoading.style.display = "flex";
+				//divLoading.style.display = "flex";
 				let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
 				let ajaxUrl = `${base_url}/Usuarios/putPerfil`;
 				let formData = new FormData(formUsuario);
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
 							swal("Error", objData.msg, "error");
 						}
 					}
-					divLoading.style.display = "none";
+					//divLoading.style.display = "none";
 					return false;
 				};
 			}
@@ -241,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
 						return false;
 					}
 				}
-				divLoading.style.display = "flex";
+				//divLoading.style.display = "flex";
 				let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
 				let ajaxUrl = `${base_url}/Usuarios/putDFiscal`;
 				let formData = new FormData(formDataFiscal);
@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
 							swal("Error", objData.msg, "error");
 						}
 					}
-					divLoading.style.display = "none";
+					//divLoading.style.display = "none";
 					return false;
 				};
 			}
@@ -382,7 +382,7 @@ let usuario = {
 		$('#modalViewUser').modal('show');
 	},//fin ViewUsuario
 	EditUsuario: (element,idusuario) => {
-		document.querySelector('#titleModal').innerHTML = "Actializar Usuario";
+		document.querySelector('#titleModal').innerHTML = "Actualizar Usuario";
 		document.querySelector('.modal-header').classList.replace("headerRegister", "headerUpdate");
 		document.querySelector('#btnActionForm').classList.replace("btn-primary", "btn-info");
 		document.querySelector('#btnText').innerHTML = "Actualizar";
@@ -450,13 +450,10 @@ let usuario = {
 			});
 	}//fin DelUsuario
 }
-//objeto PAGE
-
-let page = {
-	openModalPerfil: () => {
+	function openModalPerfil(){
 		$('#modalFormPerfil').modal('show');
-	},
-	openModal: () => {
+	}
+ 	function openModal() {
 		document.querySelector('#idUsuario').value="";
 		document.querySelector('.modal-header').classList.replace("headerUpdate", "headerRegister");
 		document.querySelector('#btnActionForm').classList.replace("btn-info", "btn-primary");
@@ -464,7 +461,6 @@ let page = {
 		document.querySelector('#titleModal').innerHTML = "Nuevo Usuario";
 		document.querySelector("#formUsuario").reset();
 		$('#modalFormUsuario').modal('show');
-	}
-}
+ 	}
 
 

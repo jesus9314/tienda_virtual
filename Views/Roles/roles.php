@@ -15,7 +15,7 @@
                     <h1>
                       <?= $data['page_name'];?>
                       <?php if($_SESSION['permisosMod']['w']){ ?>
-                        <span class="float-right"><button class="btn-sm btn-dark" title="Agregar nuevo rol" type="button" onclick="openModal();"><i class="fas fa-plus-circle"></i> Nuevo Rol</button></span>
+                        <span class="float-right"><button class="btn-sm btn-dark" title="Agregar nuevo rol" type="button" onclick="page.openModal();"><i class="fas fa-plus-circle"></i> Nuevo Rol</button></span>
                       <?php } ?>
                     </h1> 
                   </div>

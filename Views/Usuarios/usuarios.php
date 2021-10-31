@@ -14,7 +14,7 @@
                   <div class="x_title">
                     <h1><?php echo $data['page_tittle'];?>
                     <?php if($_SESSION['permisosMod']['w']){ ?>
-                    <span class="float-right"><button class="btn-sm btn-dark" title="Agregar nuevo usuario" type="button" onclick="page.openModal();"><i class="fa fa-plus-circle"></i> Nuevo Usuario</button></span>
+                    <span class="float-right"><button class="btn-sm btn-dark" title="Agregar nuevo usuario" type="button" onclick="openModal();"><i class="fa fa-plus-circle"></i> Nuevo Usuario</button></span>
                     <?php } ?>
                     </h1> 
                   </div>

@@ -38,7 +38,7 @@
 					$btnEdit = '';
 					$btnDelete = '';
 					if($_SESSION['permisosMod']['u']){
-						$btnView ='<button class="btn btn-secondary btn-sm btnPermisosRol" onClick="Permisos('.$arrData[$i]['idrol'].')" title="Ver Permisos del Rol"><i class="fas fa-key"></i></button>';
+						$btnView ='<button class="btn btn-secondary btn-sm btnPermisosRol" onClick="page.Permisos('.$arrData[$i]['idrol'].')" title="Ver Permisos del Rol"><i class="fas fa-key"></i></button>';
 						$btnEdit ='<button class="btn btn-primary btn-sm btnEditRol" onClick="rol.EditRol('.$arrData[$i]['idrol'].')" title="Editar Rol"><i class="fas fa-pencil-alt"></i></button>';
 					}
 					else

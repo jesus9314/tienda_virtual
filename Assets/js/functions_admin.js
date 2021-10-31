@@ -1,4 +1,4 @@
-'use strict'
+
 function controlTag(e) {
     tecla = (document.all) ? e.keyCode : e.which;
     if (tecla==8) return true; 
@@ -9,7 +9,7 @@ function controlTag(e) {
 }
 
 function testText(txtString){
-    let stringText = new RegExp(/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/);
+    var stringText = new RegExp(/^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/);
     if(stringText.test(txtString)){
         return true;
     }else{
@@ -18,7 +18,7 @@ function testText(txtString){
 }
 
 function testEntero(intCant){
-    let intCantidad = new RegExp(/^([0-9])*$/);
+    var intCantidad = new RegExp(/^([0-9])*$/);
     if(intCantidad.test(intCant)){
         return true;
     }else{
@@ -27,7 +27,7 @@ function testEntero(intCant){
 }
 
 function fntEmailValidate(email){
-    let stringEmail = new RegExp(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/);
+    var stringEmail = new RegExp(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/);
     if (stringEmail.test(email) == false){
         return false;
     }else{
@@ -37,36 +37,36 @@ function fntEmailValidate(email){
 
 function fntValidText(){
 	let validText = document.querySelectorAll(".validText");
-    validText.forEach((validText) => {
-            validText.addEventListener('keyup', function () {
-                let inputValue = this.value;
-                if (!testText(inputValue)) {
-                    this.classList.add('is-invalid');
-                } else {
-                    this.classList.remove('is-invalid');
-                }
-            });
-        });
+    validText.forEach(function(validText) {
+        validText.addEventListener('keyup', function(){
+			let inputValue = this.value;
+			if(!testText(inputValue)){
+				this.classList.add('is-invalid');
+			}else{
+				this.classList.remove('is-invalid');
+			}				
+		});
+	});
 }
 
 function fntValidNumber(){
 	let validNumber = document.querySelectorAll(".validNumber");
-    validNumber.forEach((validNumber) => {
-            validNumber.addEventListener('keyup',  () => {
-                let inputValue = this.value;
-                if (!testEntero(inputValue)) {
-                    this.classList.add('is-invalid');
-                } else {
-                    this.classList.remove('is-invalid');
-                }
-            });
-        });
+    validNumber.forEach(function(validNumber) {
+        validNumber.addEventListener('keyup', function(){
+			let inputValue = this.value;
+			if(!testEntero(inputValue)){
+				this.classList.add('is-invalid');
+			}else{
+				this.classList.remove('is-invalid');
+			}				
+		});
+	});
 }
 
 function fntValidEmail(){
 	let validEmail = document.querySelectorAll(".validEmail");
     validEmail.forEach(function(validEmail) {
-        validEmail.addEventListener('keyup', () => {
+        validEmail.addEventListener('keyup', function(){
 			let inputValue = this.value;
 			if(!fntEmailValidate(inputValue)){
 				this.classList.add('is-invalid');
@@ -77,8 +77,8 @@ function fntValidEmail(){
 	});
 }
 
-window.addEventListener('load', () => {
-        fntValidText();
-        fntValidEmail();
-        fntValidNumber();
-    }, false);
+window.addEventListener('load', function() {
+	fntValidText();
+	fntValidEmail(); 
+	fntValidNumber();
+}, false);
